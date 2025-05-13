@@ -26,6 +26,8 @@ class LoginController
             if ($usuarioValido) {
                 session_start();
                 $_SESSION["usuario"] = $usuarioValido["usuario"];
+                $_SESSION["usuario_id"] = $usuarioValido["id"]; // esto guarda su ID
+
                 header("Location: index.php?accion=inicio");
                 exit;
             } else {
