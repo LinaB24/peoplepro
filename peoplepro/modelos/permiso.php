@@ -1,4 +1,4 @@
-modelos/permiso.php <?php
+<?php
 require_once("core/Conexion.php");
 
 class Permiso
