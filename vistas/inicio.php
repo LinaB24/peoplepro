@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Inicio</title>
+    <link rel="stylesheet" href="public/css/inicio.css">
 </head>
 <body>
 
