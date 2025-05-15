@@ -25,10 +25,14 @@
             <li><a href="./index.php?accion=inicio">🏡 Inicio</a></li>
             <li><a href="index.php?accion=listar">📁 Áreas</a></li>
             <li><a href="index.php?accion=listarPermisos">📝 Permisos</a></li>
-            <li><a href="index.php?accion=logout" style="float:right;">🔒 Cerrar sesión</a></li>
+            <li><a href="#">📆 Calendario</a></li>
+            <li><a href="#">✨ Beneficios</a></li>
+            <li><a href="#">🧑‍🎓 Capacitaciones</a></li>
+            <li><a href="#">🪪 Visitante externo</a></li>
         </ul>
     </nav>
 
+    <a href="index.php?accion=logout" style="float:right;">🔒 Cerrar sesión</a>
     <h1 class="tituloBienvenida">Bienvenido, <?= htmlspecialchars($_SESSION["usuario"] ?? 'Usuario') ?> 👋</h1>
 
     <p>Seleccioná una de las opciones del menú para comenzar:</p>
