@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="public/css/nav.css">
 </head>
 <body>
-
+    <!-- http://localhost/crud-people-rama-s/index.php?accion=inicio -->
     <!-- Navegación principal -->
     <header class="header">
             <div class="menu-hamburguesa">
