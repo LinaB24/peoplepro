@@ -5,7 +5,7 @@
     <title>Inicio</title>
 </head>
 <body>
-
+    <h1>hola</h1>
 <!-- Navegación principal -->
 <nav style="background:#eee; padding:10px;">
     <a href="./index.php?accion=inicio">🏡 Inicio</a> |
