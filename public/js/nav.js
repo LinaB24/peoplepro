@@ -1,7 +1,9 @@
 // animacion del menu hamburguesa
-    const menuHamburgesa = document.querySelector('.menu-hamburgesa');
-    menuHamburgesa.addEventListener('click', () => {
-        menuHamburgesa.classList.toggle('activo');
+    const menuHamburguesa = document.querySelector('.menu-hamburguesa');
+    const menu = document.getElementById('nav-desplegable');
+    menuHamburguesa.addEventListener('click', () => {
+        menuHamburguesa.classList.toggle('activo');
+        menu.classList.toggle('open');
     });
 
 

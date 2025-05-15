@@ -11,20 +11,23 @@
 <body>
 
     <!-- Navegación principal -->
-    <header>
-        <nav class="nav">
-            <div class="menu-hamburgesa">
+    <header class="header">
+            <div class="menu-hamburguesa">
                 <span class="linea"></span>
                 <span class="linea"></span>
                 <span class="linea"></span>
             </div>
             <div id="logo"></div>
-        </nav>
-        <a href="./index.php?accion=inicio">🏡 Inicio</a> |
-        <a href="index.php?accion=listar">📁 Áreas</a> |
-        <a href="index.php?accion=listarPermisos">📝 Permisos</a> |
-        <a href="index.php?accion=logout" style="float:right;">🔒 Cerrar sesión</a>
     </header>
+
+    <nav class="nav-desplegable" id="nav-desplegable">
+        <ul class="nav-lista">
+            <li><a href="./index.php?accion=inicio">🏡 Inicio</a></li>
+            <li><a href="index.php?accion=listar">📁 Áreas</a></li>
+            <li><a href="index.php?accion=listarPermisos">📝 Permisos</a></li>
+            <li><a href="index.php?accion=logout" style="float:right;">🔒 Cerrar sesión</a></li>
+        </ul>
+    </nav>
 
     <h1 class="tituloBienvenida">Bienvenido, <?= htmlspecialchars($_SESSION["usuario"] ?? 'Usuario') ?> 👋</h1>
 
