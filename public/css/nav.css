@@ -1,0 +1,89 @@
+:root {
+  --primario: #6C5CE7;
+  --secundario: #2D3436;
+  --acento: #55EFC4;
+  --fondo-claro: #F5F6FA;
+  --texto-primario: #2D3436;
+  --texto-secundario: #636E72;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #F5F6FA;
+}
+.tituloBienvenida{
+    text-align: center;
+    font-size: 3.5rem;
+    margin-top: 5px;
+    color: #2D3436;
+}
+.nav{
+    background-color: #6C5CE7;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+.menu-hamburgesa {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    gap: 5px;
+    cursor: pointer;
+    background-color: transparent;
+}
+.menu-hamburgesa:hover {
+    border-radius: 50%;
+    background-color:  rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+}
+.linea {
+    position: relative;
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out;
+}
+/* Estados normales */
+.menu-hamburgesa .linea:nth-child(1),
+.menu-hamburgesa .linea:nth-child(3) {
+    top: 0;
+    transform: rotate(0deg);
+}
+
+.menu-hamburgesa .linea:nth-child(2) {
+    opacity: 1;
+    visibility: visible;
+}
+/* Estados activos (hamburguesa abierta) */
+.menu-hamburgesa.activo .linea:nth-child(1) {
+    top: 7px;
+    transform: rotate(45deg);
+}
+
+.menu-hamburgesa.activo .linea:nth-child(2) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.menu-hamburgesa.activo .linea:nth-child(3) {
+    top: -7px;
+    transform: rotate(-45deg);
+}
+
+#logo {
+    font-size: 24px;
+    white-space: pre-wrap;
+    padding: 0 5px 5px 0;
+    animation: blink-caret 0.75s step-end infinite;
+    color: var(--texto-primario);
+    font-family: "Libre Franklin", sans-serif;
+    font-weight:900;
+    margin-left: 20px;
+    background-color: transparent;
+    }
+

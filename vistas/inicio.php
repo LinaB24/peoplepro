@@ -3,28 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Inicio</title>
-    <link rel="stylesheet" href="public/css/inicio.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/nav.css">
 </head>
 <body>
 
-<!-- Navegación principal -->
-<nav style="background:#eee; padding:10px;">
-    <a href="./index.php?accion=inicio">🏡 Inicio</a> |
-    <a href="index.php?accion=listar">📁 Áreas</a> |
-    <a href="index.php?accion=listarPermisos">📝 Permisos</a> |
-    <a href="index.php?accion=logout" style="float:right;">🔒 Cerrar sesión</a>
-</nav>
-<hr>
+    <!-- Navegación principal -->
+    <header>
+        <nav class="nav">
+            <div class="menu-hamburgesa">
+                <span class="linea"></span>
+                <span class="linea"></span>
+                <span class="linea"></span>
+            </div>
+            <div id="logo"></div>
+        </nav>
+        <a href="./index.php?accion=inicio">🏡 Inicio</a> |
+        <a href="index.php?accion=listar">📁 Áreas</a> |
+        <a href="index.php?accion=listarPermisos">📝 Permisos</a> |
+        <a href="index.php?accion=logout" style="float:right;">🔒 Cerrar sesión</a>
+    </header>
 
-<h1>Bienvenido, <?= htmlspecialchars($_SESSION["usuario"] ?? 'Usuario') ?> 👋</h1>
+    <h1 class="tituloBienvenida">Bienvenido, <?= htmlspecialchars($_SESSION["usuario"] ?? 'Usuario') ?> 👋</h1>
 
-<p>Seleccioná una de las opciones del menú para comenzar:</p>
+    <p>Seleccioná una de las opciones del menú para comenzar:</p>
 
-<ul>
-    <li><a href="index.php?accion=listar">📁 Gestión de Áreas</a></li>
-    <li><a href="index.php?accion=listarPermisos">📝 Permisos</a></li>
-</ul>
-<br>
-<a href="index.php?accion=registrar">¿No tenés cuenta? Registrate aquí</a>
+    <ul>
+        <li><a href="index.php?accion=listar">📁 Gestión de Áreas</a></li>
+        <li><a href="index.php?accion=listarPermisos">📝 Permisos</a></li>
+    </ul>
+    <br>
+    <a href="index.php?accion=registrar">¿No tenés cuenta? Registrate aquí</a>
+    <script src="public/js/nav.js"></script>
 </body>
 </html>
