@@ -16,24 +16,25 @@ class PermisoController
         require __DIR__ . '/../vistas/permiso/index.php';
     }
 
-    public function crear()
-    {
+        public function crear()
+        {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $empleado_id = $_POST["empleado_id"] ?? '';
+            $empleado_id = $_SESSION["usuario_id"] ?? null;
             $tipo_permiso = $_POST["tipo_permiso"] ?? '';
             $fecha_inicio = $_POST["fecha_inicio"] ?? '';
             $fecha_fin = $_POST["fecha_fin"] ?? '';
             $motivo = $_POST["motivo"] ?? '';
 
-            if (!empty($empleado_id)) {
+            if ($empleado_id && !empty($tipo_permiso)) {
                 $this->modelo->crear($empleado_id, $tipo_permiso, $fecha_inicio, $fecha_fin, $motivo);
                 header("Location: index.php?accion=listarPermisos");
                 exit;
             }
         }
 
-        require __DIR__ . '/../vistas/permiso/crear.php';
+            require __DIR__ . '/../vistas/permiso/crear.php';
     }
+
 
     public function editar()
     {

@@ -18,7 +18,7 @@
     <input type="submit" value="Registrarse">
 </form>
 
-<a href="index.php?accion=login">← Volver al login</a>
+<a href="./index.php?accion=inicio">← Volver</a>
 
 </body>
 </html>

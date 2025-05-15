@@ -1,0 +1,137 @@
+:root {
+    --primario: #6C5CE7;
+    --secundario: #2D3436;
+    --acento: #55EFC4;
+    --fondo-claro:#F7F7F8;
+    --fondo-nav: #EFEFF1;
+    --texto-primario: #2D3436;
+    --texto-secundario: #636E72;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--fondo-claro);
+}
+.tituloBienvenida{
+    text-align: center;
+    font-size: 3.5rem;
+    margin-top: 5px;
+    color: #2D3436;
+}
+.header{
+    background-color: #ffffff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    box-shadow: #bdc2c4 0px 0px 2.5px;
+}
+.menu-hamburguesa {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    gap: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    z-index: 2;
+}
+.menu-hamburguesa:hover {
+    border-radius: 50%;
+    background-color:  rgba(92, 91, 91, 0.2);
+    transition: all 0.2s ease-in-out;
+}
+.linea {
+    position: relative;
+    width: 20px;
+    height: 2px;
+    background-color: var(--primario);
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out;
+}
+/* Estados normales */
+.menu-hamburguesa .linea:nth-child(1),
+.menu-hamburguesa .linea:nth-child(3) {
+    top: 0;
+    transform: rotate(0deg);
+}
+
+.menu-hamburguesa .linea:nth-child(2) {
+    opacity: 1;
+    visibility: visible;
+}
+/* Estados activos (hamburguesa abierta) */
+.menu-hamburguesa.activo .linea:nth-child(1) {
+    top: 7px;
+    transform: rotate(45deg);
+}
+
+.menu-hamburguesa.activo .linea:nth-child(2) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.menu-hamburguesa.activo .linea:nth-child(3) {
+    top: -7px;
+    transform: rotate(-45deg);
+}
+/* logo aimacion */
+#logo {
+    font-size: 24px;
+    white-space: pre-wrap;
+    padding: 0 5px 5px 0;
+    animation: blink-caret 0.75s step-end infinite;
+    color: var(--texto-primario);
+    font-family: "Libre Franklin", sans-serif;
+    font-weight:900;
+    margin-left: 20px;
+    background-color: transparent;
+    z-index: 2;
+    }
+/* nav desplegable  */
+.nav-desplegable{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    padding: 60px 10px;
+    background-color: var(--fondo-nav);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.nav-desplegable.open{
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+/*nav desplegabe por dentro*/
+.nav-lista  li{
+    list-style: none;
+    margin: 15px 0 0 0;
+    width: 250px;
+}
+.nav-lista  a{
+    text-decoration: none;
+    color: var(--texto-primario);
+    font-size: 1.5rem;
+    font-family: "Libre Franklin", sans-serif;
+    font-weight: 700;
+}
+.nav-lista{
+    background-color: lightsalmon;
+    width: 260px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

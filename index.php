@@ -86,11 +86,25 @@ switch ($accion) {
         $permiso = new PermisoController();
         $permiso->eliminar();
         break;
+        // Gestión de usuarios por área
+    case "asignarUsuarios":
+        $controlador = new AreaController();
+        $controlador->asignarUsuarios();
+        break;
+
+    case "asignarUsuarioArea":
+        $controlador = new AreaController();
+        $controlador->asignarUsuarioArea();
+        break;
+
+    case "quitarUsuarioArea":
+        $controlador = new AreaController();
+        $controlador->quitarUsuarioArea();
+        break;
 
     // Acción por defecto
     default:
         require("vistas/inicio.php");
         break;
 }
-
 

@@ -19,9 +19,5 @@
 
     <input type="submit" value="Iniciar Sesión">
 </form>
-
-<br>
-<a href="index.php?accion=registrar">¿No tenés cuenta? Registrate aquí</a>
-
 </body>
 </html>
