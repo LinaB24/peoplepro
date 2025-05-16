@@ -23,4 +23,5 @@
             </td>
         </tr>
     <?php endforeach; ?>
-</table>
+</table><br>
+<button><a href="/peoplepro/public/home/index">Inicio</a></button>
