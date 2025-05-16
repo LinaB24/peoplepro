@@ -1,3 +1,4 @@
+
 <h2>Gestión de Áreas</h2>
 <a href="/peoplepro/public/area/crear">Agregar Nueva Área</a>
 <table border="1" cellpadding="5">
@@ -18,4 +19,5 @@
         </td>
     </tr>
     <?php endforeach; ?>
-</table>
+</table><br>
+<button><a href="/peoplepro/public/home/index">Inicio</a></button>

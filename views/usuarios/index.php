@@ -38,6 +38,7 @@
                 <tr><td colspan="6">No hay usuarios registrados.</td></tr>
             <?php endif; ?>
         </tbody>
-    </table>
+    </table><br>
+    <button><a href="/peoplepro/public/home/index">Inicio</a></button>
 </body>
 </html>
