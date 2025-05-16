@@ -97,7 +97,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 300px;
+    width: 250px;
     height: 100vh;
     padding: 60px 10px;
     background-color: var(--fondo-nav);
@@ -118,20 +118,32 @@
 .nav-lista  li{
     list-style: none;
     margin: 15px 0 0 0;
-    width: 250px;
+    padding: 9px;
+    height: 45px;
 }
 .nav-lista  a{
     text-decoration: none;
     color: var(--texto-primario);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-family: "Libre Franklin", sans-serif;
     font-weight: 700;
+    height: 45px;
 }
 .nav-lista{
-    background-color: lightsalmon;
-    width: 260px;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.nav-lista li:hover{
+    background-color: rgba(92, 91, 91, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+.nav-lista a:hover{
+    color: var(--primario);
+}
+.nav-lista li, .nav-lista a, .nav-lista {
+    background-color: transparent;
+    box-sizing: border-box;
+    width: 250px;
 }
