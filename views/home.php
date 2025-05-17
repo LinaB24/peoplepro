@@ -2,17 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Inicio | PeoplePro</title>
+  <title>Inicio</title>
   <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
 </head>
 <body>
     <header class="header">
-        <div class="menu-hamburguesa">
-            <span class="linea"></span>
-            <span class="linea"></span>
-            <span class="linea"></span>
+        <div class="izquierda">
+            <button class="menu-hamburguesa">
+                <span class="linea"></span>
+                <span class="linea"></span>
+                <span class="linea"></span>
+            </button>
+            <div id="logo"></div> 
         </div>
-        <div id="logo"></div>
+        <form action="#" class="buscador">  
+        <input type="text" placeholder="Buscar" class="input-icono">
+        </form>
+        <div class="derecha">
+            <p><?= htmlspecialchars($_SESSION["usuario"] ?? 'Usuario') ?></p>
+        </div>
     </header>
     <nav class="nav-desplegable" id="nav-desplegable">
         <ul class="nav-lista">
