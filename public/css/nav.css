@@ -13,12 +13,7 @@
     box-sizing: border-box;
     background-color: var(--fondo-claro);
 }
-.tituloBienvenida{
-    text-align: center;
-    font-size: 3.5rem;
-    margin-top: 5px;
-    color: #2D3436;
-}
+/* header */
 .header{
     background-color: #ffffff;
     padding: 10px;
@@ -29,6 +24,7 @@
     height: auto;
     box-shadow: #bdc2c4 0px 0px 2.5px;
 }
+/* div izquierda con el logo y el menu hamburguesa */
 .izquierda {
     display: flex;
     align-items: center;
@@ -167,6 +163,7 @@
 .input-icono:focus {
     border-color: #8679eb;
 }
+/* div derecha con el nombre y el icono de usuario */
 .derecha {
     display: flex;
     align-items: center;
@@ -175,4 +172,11 @@
  .derecha, .izquierda, .buscador, .menu-hamburguesa, #logo, .nav-lista li, .nav-lista a, .nav-lista {
     background-color: transparent;
     box-sizing: border-box;
+}
+/* titulo de bienvenida al usuario */
+.tituloBienvenida{
+    text-align: center;
+    font-size: 3.5rem;
+    margin-top: 5px;
+    color: #2D3436;
 }

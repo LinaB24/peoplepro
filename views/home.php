@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Inicio | PeoplePro</title>
+  <title>Inicio</title>
   <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
 </head>
 <body>
