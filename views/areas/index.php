@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Áreas de trabajo</title>
   <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
+  <link rel="stylesheet" href="/peoplepro/public/css/areas.css">
 </head>
 <body>
     <header class="header">
@@ -35,27 +36,27 @@
             <li><a href="/peoplepro/public/area/index">Áreas</a></li>
         </ul>
     </nav><br>
-    <h2>Gestión de Áreas</h2>
-    <a href="/peoplepro/public/area/crear">Agregar Nueva Área</a>
-    <table border="1" cellpadding="5">
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
-        </tr>
+    <h2 class="area-titulo">Gestión de Áreas</h2>
+    <button class="nueva-area"><a href="/peoplepro/public/area/crear">Nueva Área</a></button>
+    <main class="main">
         <?php foreach ($data['areas'] as $area): ?>
-        <tr>
-            <td><?= $area['id'] ?></td>
-            <td><?= $area['nombre'] ?></td>
-            <td><?= $area['descripcion'] ?></td>
-            <td>
-                <a href="/peoplepro/public/area/editar/<?= $area['id'] ?>">Editar</a> |
-                <a href="/peoplepro/public/area/eliminar/<?= $area['id'] ?>" onclick="return confirm('¿Eliminar esta área?')">Eliminar</a>
-            </td>
-        </tr>
+        <div class="area-contenedor">   
+            <div class="area">
+                <div class="area-header">
+                    <h2><?= $area['nombre'] ?></h2>
+                    <button class="confuguracion-area" id="configuracion"><img src="../../public/img/dots_three_outline_vertical_icon_173863.svg"></button>
+                </div>
+                <p><?= $area['descripcion'] ?></p>
+                <button class="ver-mas"><a href="">ver más</a></button>
+            </div>
+            <ul class="area-menu">
+                <li><a href="/peoplepro/public/area/editar/<?= $area['id'] ?>">Editar</a></li>
+                <li><a href="/peoplepro/public/area/eliminar/<?= $area['id'] ?>" onclick="return confirm('¿Eliminar esta área?')">Eliminar</a></li>
+            </ul>
+        </div>
         <?php endforeach; ?>
-    </table><br>
+    </main>
     <script src="/peoplepro/public/js/nav.js"></script>
+    <script src="/peoplepro/public/js/area.js"></script>
 </body>
 </html>

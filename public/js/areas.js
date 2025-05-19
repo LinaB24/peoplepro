@@ -1,0 +1,1 @@
+const configuracion = document.getElementById("configuracion");

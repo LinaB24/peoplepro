@@ -1,0 +1,113 @@
+:root {
+    --primario: #6C5CE7;
+    --texto-primario: #2D3436;
+    --texto-secundario: #636E72;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* main */
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: chartreuse;
+    height: auto;
+}
+/* titulo de bienvenida */
+.area-titulo{
+    text-align: center;
+    background-color: aqua;
+    font-size: 3rem;
+}
+/* boton para agregar area */
+.nueva-area{
+    width: 100px; height: 40px;
+    background-color: var(--primario);
+    color: white;
+    border: none;
+}
+/* tarjetas de las areas */
+.area-contenedor{
+    margin: 10px;
+    border: solid 1px #2D3436;
+    width: 350px; height: auto;
+    position: relative;
+}
+.area{
+    width:290px; height: 350px;
+    align-items: center;
+    border-radius: 10px;
+}
+.area-header{
+    background-color: #636E72;
+    display: flex;
+    align-items: center;
+    height: 40px; width: 100%;
+    margin-bottom: 20px;
+}
+.area-header h2{
+    text-align: center;
+    width:90%;
+}
+.confuguracion-area{
+    width: 25px; height: 25px;
+    margin-right: 6px; margin-left: auto;
+    padding: 4px;
+}
+.ver-mas{
+    margin-top: auto; margin-bottom: 10px;
+    width: 100px; height: 40px;
+    border-radius: 10px;
+    border: solid 2px #6C5CE7;
+}
+.ver-mas a{
+    text-decoration: none;
+    color: #6C5CE7;
+}
+.ver-mas:hover{
+    background-color: #6C5CE7;
+    transition: all 0.2s ease-in-out;
+}
+.ver-mas:hover a{
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
+.area-contenedor, .area, .area-menu{
+    display: flex;
+    flex-direction: column;
+}
+.nueva-area, .confuguracion-area {
+    border: none;
+}
+.area-header h2, .area-header img, .area p, .confuguracion-area, .area-menu li, .area-menu a, .ver-mas a{
+    background-color: transparent;
+}
+/* menu desplegable de configuracion */
+.area-menu{
+    background-color: #ffffff;
+    width: 65px; height: 70px;
+    position: absolute;
+    top: 12px; right: 0;
+    border-radius: 5px;
+    justify-content: center;
+    padding: 0 5px;
+}
+.area-menu li{
+    list-style: none;
+    margin-top: 2px;
+    padding: 3px;
+    height: 23px;
+    justify-content: center;
+}
+.area-menu li:hover{
+    border-radius: 3px;
+    background-color:rgba(92, 91, 92, 0.2);
+}
+.area-menu a{
+    text-decoration: none;
+    font-size: .8rem;
+    color: var(--texto-primario);
+}
