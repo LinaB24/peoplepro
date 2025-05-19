@@ -71,4 +71,7 @@ class EvaluacionController {
     private function view($vista, $data = []) {
         require_once "../views/$vista.php";
     }
+    
+
+
 }

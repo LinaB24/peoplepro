@@ -1,11 +1,11 @@
 <?php
-require_once 'Database.php'; // Asegúrate que tienes una clase para la conexión PDO
+require_once 'Database.php';
 
 class Evaluacion {
     private $conn;
 
     public function __construct() {
-        $this->$conn = Database::connect();
+        $this->conn = Database::getConnection();
     }
 
     public function obtenerTodos() {
