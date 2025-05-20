@@ -1,19 +1,23 @@
 <?php
 require_once '../models/Evaluacion.php';
 
-class EvaluacionController {
+class EvaluacionController
+{
     private $model;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new Evaluacion();
     }
 
-    public function index() {
+    public function index()
+    {
         $data['evaluaciones'] = $this->model->obtenerTodos();
         $this->view('evaluaciones/index', $data);
     }
 
-    public function crear() {
+    public function crear()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = [
                 'nombre' => $_POST['nombre'],
@@ -31,7 +35,8 @@ class EvaluacionController {
         }
     }
 
-    public function editar($id = null) {
+    public function editar($id = null)
+    {
         if ($id === null) {
             header('Location: /peoplepro/public/evaluacion/index');
             exit;
@@ -59,7 +64,8 @@ class EvaluacionController {
         }
     }
 
-    public function eliminar($id) {
+    public function eliminar($id)
+    {
         if ($this->model->eliminar($id)) {
             header('Location: /peoplepro/public/evaluacion/index');
             exit;
@@ -68,10 +74,9 @@ class EvaluacionController {
         }
     }
 
-    private function view($vista, $data = []) {
+    private function view($vista, $data = [])
+    {
+        extract($data); // ← Esto convierte 'evaluaciones' en $evaluaciones dentro de la vista
         require_once "../views/$vista.php";
-    }
-    
-
-
+    } 
 }
