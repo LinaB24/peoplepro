@@ -37,26 +37,27 @@
         </ul>
     </nav><br>
     <h2 class="area-titulo">Gestión de Áreas</h2>
-    <button class="nueva-area"><a href="/peoplepro/public/area/crear">Nueva Área</a></button>
+    <div class="nueva-area-contenedor"><button class="nueva-area" title="crear nueva área"><a href="/peoplepro/public/area/crear">+</a></button></div>
     <main class="main">
         <?php foreach ($data['areas'] as $area): ?>
         <div class="area-contenedor">   
             <div class="area">
                 <div class="area-header">
                     <h2><?= $area['nombre'] ?></h2>
-                    <button class="confuguracion-area" id="configuracion"><img src="../../public/img/dots_three_outline_vertical_icon_173863.svg"></button>
+                    <button class="confuguracion-area" id="configuracion-<?= $area['id'] ?>"><img src="/peoplepro/public/img/dots_three_outline_vertical_icon_173863.svg" alt="Config"></button>
                 </div>
                 <p><?= $area['descripcion'] ?></p>
                 <button class="ver-mas"><a href="">ver más</a></button>
             </div>
-            <ul class="area-menu">
-                <li><a href="/peoplepro/public/area/editar/<?= $area['id'] ?>">Editar</a></li>
-                <li><a href="/peoplepro/public/area/eliminar/<?= $area['id'] ?>" onclick="return confirm('¿Eliminar esta área?')">Eliminar</a></li>
+            <ul class="area-menu" id="area-menu-<?= $area['id'] ?>">
+                <h2>Configuración</h2>
+                <li><a href="/peoplepro/public/area/editar/<?= $area['id'] ?>">✏️ Editar</a></li>
+                <li><a href="/peoplepro/public/area/eliminar/<?= $area['id'] ?>" onclick="return confirm('¿Eliminar esta área?')">❌ Eliminar</a></li>
             </ul>
         </div>
         <?php endforeach; ?>
     </main>
     <script src="/peoplepro/public/js/nav.js"></script>
-    <script src="/peoplepro/public/js/area.js"></script>
+    <script src="/peoplepro/public/js/areas.js"></script>
 </body>
 </html>

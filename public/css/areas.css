@@ -13,36 +13,67 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: chartreuse;
     height: auto;
 }
 /* titulo de bienvenida */
 .area-titulo{
     text-align: center;
-    background-color: aqua;
     font-size: 3rem;
 }
 /* boton para agregar area */
-.nueva-area{
-    width: 100px; height: 40px;
+.nueva-area-contenedor {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 20px;
+}
+.nueva-area {
+    width: 40px;
+    height: 40px;
     background-color: var(--primario);
     color: white;
-    border: none;
+    border: 2px solid var(--primario);
+    border-radius: 50%;
+    transition: background-color 0.6s ease, color 0.6s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 20px 0;
+}
+.nueva-area a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.6s ease;
+}
+/* Hover: fondo blanco y texto morado */
+.nueva-area:hover {
+    background-color: white;
+    color: var(--primario);
+}
+.nueva-area:hover a {
+    color: var(--primario);
 }
 /* tarjetas de las areas */
 .area-contenedor{
     margin: 10px;
-    border: solid 1px #2D3436;
-    width: 350px; height: auto;
+    width: 330px; height: auto;
     position: relative;
+    z-index: 1;
 }
 .area{
     width:290px; height: 350px;
     align-items: center;
     border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 0 20px; 
+}
+.area p{
+    font-size: 1.2rem;
+    color: var(--texto-secundario);
 }
 .area-header{
-    background-color: #636E72;
     display: flex;
     align-items: center;
     height: 40px; width: 100%;
@@ -50,50 +81,85 @@
 }
 .area-header h2{
     text-align: center;
-    width:90%;
+    width:300px;
 }
+/* icono del meni tres puntos */
 .confuguracion-area{
     width: 25px; height: 25px;
-    margin-right: 6px; margin-left: auto;
-    padding: 4px;
+    position: absolute;
+    cursor: pointer;
+    justify-content: center; align-items: center;
+    top: 8px; right: 50px;
+    border: none;
 }
-.ver-mas{
+.confuguracion-area img{
+    width: 20px; height: 15px;
+}
+.confuguracion-area:hover{
+    background-color: rgba(92, 91, 92, 0.2);
+    border-radius: 5px;
+}
+/* boton de ver mas  */
+.ver-mas {
     margin-top: auto; margin-bottom: 10px;
     width: 100px; height: 40px;
     border-radius: 10px;
-    border: solid 2px #6C5CE7;
+    border: solid 2px #6C5CE7; 
+    background-color: #6C5CE7;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.ver-mas a{
+.ver-mas a {
     text-decoration: none;
+    color: white;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+/* animacion del boton de ver mas */
+.ver-mas::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    background-color: transparent;
+    backdrop-filter: blur(0);
+    transition: width 1s ease;
+    z-index: 0;
+}
+.ver-mas:hover::after {
+    width: 100%;
+    left: 0;
+    right: auto;
+    background-color: white;
+}
+.ver-mas:hover a {
     color: #6C5CE7;
 }
-.ver-mas:hover{
-    background-color: #6C5CE7;
-    transition: all 0.2s ease-in-out;
-}
-.ver-mas:hover a{
-    color: white;
-    transition: all 0.2s ease-in-out;
-}
-.area-contenedor, .area, .area-menu{
+/* contenedor */
+.area-contenedor, .area, .area-menu, .confuguracion-area{
     display: flex;
     flex-direction: column;
 }
-.nueva-area, .confuguracion-area {
-    border: none;
-}
-.area-header h2, .area-header img, .area p, .confuguracion-area, .area-menu li, .area-menu a, .ver-mas a{
+.area-header h2, .area-header img, .area p, .confuguracion-area, .area-menu li, .area-menu a, .ver-mas a, .area-menu h2, .area-header, .nueva-area a,.area-contenedor{
     background-color: transparent;
 }
 /* menu desplegable de configuracion */
 .area-menu{
     background-color: #ffffff;
-    width: 65px; height: 70px;
+    width: 90px; height: 90px;
     position: absolute;
-    top:20px; right: 20px;
+    top:35px; right:0px;
     border-radius: 5px;
     justify-content: center;
     padding: 0 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: none;
 }
 .area-menu li{
     list-style: none;
@@ -110,4 +176,12 @@
     text-decoration: none;
     font-size: .8rem;
     color: var(--texto-primario);
+}
+.area-menu h2{
+    font-size: .8rem;
+    color: var(--texto-primario);
+}
+/* activo menu desplegable */
+.area-menu.activo {
+    display: flex;
 }
