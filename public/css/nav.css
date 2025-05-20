@@ -11,6 +11,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+body {
     background-color: var(--fondo-claro);
 }
 /* header */
@@ -39,7 +41,7 @@
     height: 40px;
     gap: 5px;
     cursor: pointer;
-    z-index: 2;
+    z-index: 9999;
     border: none;
 }
 .menu-hamburguesa:hover {
@@ -91,12 +93,12 @@
     font-family: "Libre Franklin", sans-serif;
     font-weight:900;
     margin-left: 20px;
-    z-index: 2;
+    z-index: 9999;
     width: 150px;
     }
 /* nav desplegable  */
 .nav-desplegable{
-    position: absolute;
+    position: fixed; 
     top: 0;
     left: 0;
     width: 250px;
@@ -110,6 +112,7 @@
     opacity: 0;
     pointer-events: none;
     transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: 8888;
 }
 .nav-desplegable.open{
     transform: translateX(0);
