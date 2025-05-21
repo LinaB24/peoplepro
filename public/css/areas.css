@@ -7,6 +7,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Inter", sans-serif;
 }
 /* main */
 .main{
@@ -19,6 +20,7 @@
 .area-titulo{
     text-align: center;
     font-size: 3rem;
+    color: var(--texto-primario);
 }
 /* boton para agregar area */
 .nueva-area-contenedor {
@@ -27,11 +29,12 @@
     padding: 0 20px;
 }
 .nueva-area {
+    padding-bottom: 5px; 
     width: 40px;
     height: 40px;
-    background-color: var(--primario);
+    background-color: #74c6df;
     color: white;
-    border: 2px solid var(--primario);
+    border: 2px solid #74c6df;
     border-radius: 50%;
     transition: background-color 0.6s ease, color 0.6s ease;
     display: flex;
@@ -62,7 +65,7 @@
     z-index: 1;
 }
 .area{
-    width:290px; height: 350px;
+    width:290px; height: 250px;
     align-items: center;
     border-radius: 10px;
     background-color: #ffffff;
@@ -72,6 +75,10 @@
 .area p{
     font-size: 1.2rem;
     color: var(--texto-secundario);
+    height: 120px;
+    width: 230px;
+    overflow:hidden;
+    text-overflow: ellipsis;
 }
 .area-header{
     display: flex;
@@ -80,8 +87,11 @@
     margin-bottom: 20px;
 }
 .area-header h2{
-    text-align: center;
-    width:300px;
+    /* text-align: center; */
+    width:240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--primario);
 }
 /* icono del meni tres puntos */
 .confuguracion-area{
@@ -102,7 +112,7 @@
 /* boton de ver mas  */
 .ver-mas {
     margin-top: auto; margin-bottom: 10px;
-    width: 100px; height: 40px;
+    width: 180px; height: 40px;
     border-radius: 10px;
     border: solid 2px #6C5CE7; 
     background-color: #6C5CE7;
@@ -146,13 +156,13 @@
     display: flex;
     flex-direction: column;
 }
-.area-header h2, .area-header img, .area p, .confuguracion-area, .area-menu li, .area-menu a, .ver-mas a, .area-menu h2, .area-header, .nueva-area a,.area-contenedor{
+ .area-header h2, .area-header img, .area p, .confuguracion-area, .area-menu li, .area-menu a, .ver-mas a, .area-menu h2, .area-header, .nueva-area a,.area-contenedor{
     background-color: transparent;
 }
 /* menu desplegable de configuracion */
 .area-menu{
     background-color: #ffffff;
-    width: 90px; height: 90px;
+    width: 100px; height: 90px;
     position: absolute;
     top:35px; right:0px;
     border-radius: 5px;
@@ -164,7 +174,7 @@
 .area-menu li{
     list-style: none;
     margin-top: 2px;
-    padding: 3px;
+    padding: 0 0 5px 3px;
     height: 23px;
     justify-content: center;
 }
@@ -176,10 +186,12 @@
     text-decoration: none;
     font-size: .8rem;
     color: var(--texto-primario);
+    font-weight: 600;
 }
 .area-menu h2{
     font-size: .8rem;
     color: var(--texto-primario);
+    margin-bottom: 5px;
 }
 /* activo menu desplegable */
 .area-menu.activo {
