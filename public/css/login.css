@@ -1,0 +1,68 @@
+
+/*fondo*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #d99bb9, #b39cd4, #93bbe4);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*titulo*/
+h1 {
+    color: #4b3c69;
+    margin-bottom: 10px;
+}
+
+/*formulario*/
+form {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+/*etiquetas*/
+label {
+    color: #333;
+    font-weight: 600;
+}
+
+/*campos texto*/
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/*boton*/
+input[type="submit"] {
+    background-color: #b39cd4;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #a18ac4;
+}
+
+/*error*/
+p {
+    text-align: center;
+}
