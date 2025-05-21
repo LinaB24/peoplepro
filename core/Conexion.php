@@ -4,7 +4,7 @@ class Conexion {
     private $db;
 
     private $host = "localhost";
-    private $dbName = "peoplepro";  
+    private $dbName = "people_pro";  
     private $user = "root";           
     private $pass = "";               
 
