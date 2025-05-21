@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
+   
+    <link rel="stylesheet" href="/repositoriogit/peoplepro/public/css/login.css">
 </head>
 <body>
 
-<h1>Login</h1>
+<h1>PeoplePro</h1>
 
 <?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
 
@@ -19,5 +21,6 @@
 
     <input type="submit" value="Iniciar Sesión">
 </form>
+
 </body>
 </html>
