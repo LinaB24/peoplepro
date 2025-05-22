@@ -19,14 +19,15 @@ class Area {
     }
 
     public function guardar($data) {
-        $stmt = $this->conn->prepare("INSERT INTO areas (nombre, descripcion) VALUES (?, ?)");
-        return $stmt->execute([$data['nombre'], $data['descripcion'] ?? null]);
+        $stmt = $this->conn->prepare("INSERT INTO areas (nombre, descripcion, color_fondo) VALUES (?, ?, ?)");
+        return $stmt->execute([$data['nombre'], $data['descripcion'] ?? null,  $data['color_fondo'] ?? '#F7F7F8']);
     }
 
     public function actualizar($data) {
-        $stmt = $this->conn->prepare("UPDATE areas SET nombre = ?, descripcion = ? WHERE id = ?");
-        return $stmt->execute([$data['nombre'], $data['descripcion'] ?? null, $data['id']]);
-    }
+    $stmt = $this->conn->prepare("UPDATE areas SET nombre = ?, descripcion = ?, color_fondo = ? WHERE id = ?");
+    return $stmt->execute([$data['nombre'], $data['descripcion'] ?? null, $data['color_fondo'] ?? '#F7F7F8', $data['id']
+    ]);
+}
 
     public function eliminar($id) {
         $stmt = $this->conn->prepare("DELETE FROM areas WHERE id = ?");

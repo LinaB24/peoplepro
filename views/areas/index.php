@@ -46,17 +46,18 @@
         <div class="area-contenedor">   
             <div class="area">
                 <div class="area-header">
-                    <h2><?= $area['nombre'] ?></h2>
+                    <h2 style="color: <?= htmlspecialchars($area['color_fondo']) ?>;"><?= $area['nombre'] ?></h2>
                     <button class="confuguracion-area" id="configuracion-<?= $area['id'] ?>"><img src="/peoplepro/public/img/dots_three_outline_vertical_icon_173863.svg" alt="Config"></button>
                 </div>
                 <p><?= $area['descripcion'] ?></p>
-                <button class="ver-mas"><a href="">ver más</a></button>
+                <button class="ver-mas" onclick="window.location.href='#'"><a href="">ver más</a></button>
             </div>
             <ul class="area-menu" id="area-menu-<?= $area['id'] ?>">
                 <h2>Configuración</h2>
                 <li><a href="/peoplepro/public/area/editar/<?= $area['id'] ?>">✏️ Editar</a></li>
                 <li><a href="/peoplepro/public/area/eliminar/<?= $area['id'] ?>" onclick="return confirm('¿Eliminar esta área?')">❌ Eliminar</a></li>
             </ul>
+            <div class="color-fondo" style="background-color: <?= htmlspecialchars($area['color_fondo']) ?>;"></div>
         </div>
         <?php endforeach; ?>
     </main>
