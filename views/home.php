@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
 </head>
 <body>
+    <!-- http://localhost/peoplepro/public/home/index -->
     <header class="header">
         <div class="izquierda">
             <button class="menu-hamburguesa">
