@@ -19,7 +19,5 @@
         }
         ?>
     </div>
-
-
     <input type="submit" value="Guardar">
 </form>

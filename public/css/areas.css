@@ -204,3 +204,10 @@
 .area-menu.activo {
     display: flex;
 }
+/* iframes toggle */
+#iframe-contenedor{
+    display: none;
+}
+#iframe-contenedor.activo {
+    display: block;
+}
