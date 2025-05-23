@@ -3,15 +3,15 @@ CREATE DATABASE IF NOT EXISTS `peoplepro` DEFAULT CHARACTER SET utf8mb4 COLLATE 
 USE `peoplepro`;
 
 -- Tabla: areas
-CREATE TABLE areas (
-  id INT(11) NOT NULL AUTO_INCREMENT,
-  nombre VARCHAR(100) NOT NULL,
-  descripcion TEXT DEFAULT NULL,
-  color_fondo VARCHAR(7) DEFAULT '#6C5CE7',
-  PRIMARY KEY (id)
+CREATE TABLE `areas` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(100) NOT NULL,
+  `descripcion` TEXT DEFAULT NULL,
+  `color_fondo` VARCHAR(7) DEFAULT '#6C5CE7',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO areas (id, nombre, descripcion, color_fondo) VALUES
+INSERT INTO `areas` (`id`, `nombre`, `descripcion`, `color_fondo`) VALUES
 (1, 'corte', 'asdd', '#6C5CE7'),
 (2, 'juan', 'jasd', '#6C5CE7');
 
