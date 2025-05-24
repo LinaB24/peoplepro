@@ -1,10 +1,10 @@
 :root {
     --primario: #6C5CE7;
-    --secundario: #2D3436;
     --fondo-claro:#F7F7F8;
     --fondo-nav: #EFEFF1;
     --texto-primario: #2D3436;
     --texto-secundario: #636E72;
+    --box-shadow: #bdc2c4 0px 0px 2.5px;
 }
 *{
     margin: 0;
@@ -23,7 +23,7 @@ body {
     justify-content: space-between;
     width: 100%;
     height: auto;
-    box-shadow: #bdc2c4 0px 0px 2.5px;
+    box-shadow: var(--box-shadow);
 }
 /* div izquierda con el logo y el menu hamburguesa */
 .izquierda {
@@ -119,12 +119,21 @@ body {
     pointer-events: auto;
 }
 /*nav desplegabe por dentro*/
+/* contenedor */
+.nav-lista{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* lista */
 .nav-lista  li{
     list-style: none;
     margin: 15px 0 0 0;
     padding: 9px;
     height: 45px;
 }
+/* texto de la lista */
 .nav-lista  a{
     text-decoration: none;
     color: var(--texto-primario);
@@ -133,12 +142,7 @@ body {
     font-weight: 700;
     height: 45px;
 }
-.nav-lista{
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+/* hover del menu */
 .nav-lista li:hover{
     background-color: rgba(92, 91, 91, 0.1);
     transition: all 0.2s ease-in-out;
@@ -171,7 +175,8 @@ body {
     align-items: center;
     width: 220px;
 }
- .derecha, .izquierda, .buscador, .menu-hamburguesa, #logo, .nav-lista li, .nav-lista a, .nav-lista {
+ .derecha, .izquierda, .buscador, .menu-hamburguesa, 
+ #logo, .nav-lista li, .nav-lista a, .nav-lista {
     background-color: transparent;
     box-sizing: border-box;
 }

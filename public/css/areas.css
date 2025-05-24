@@ -43,6 +43,7 @@
     overflow: hidden;
     margin: 20px 0;
 }
+/* texto del boton  */
 .nueva-area a {
     font-size: 1.5rem;
     text-decoration: none;
@@ -57,13 +58,14 @@
 .nueva-area:hover a {
     color: var(--primario);
 }
-/* tarjetas de las areas */
+/*contenedor tarjetas de las areas */ 
 .area-contenedor{
     margin: 10px;
     width: 330px; height: 280px;
     position: relative;
     z-index: 1;
 }
+/* el color de fondo / la sombra de color */
 .color-fondo{
     width:290px; height: 250px;
     position: absolute;
@@ -71,6 +73,7 @@
     top: 5px; left: 5px;
     border-radius: 10px;
 }
+/* tarjetas de areas */
 .area{
     width:290px; height: 250px;
     align-items: center;
@@ -78,6 +81,7 @@
     background-color: #ffffff;
     padding: 0 20px; 
 }
+/* descriocion del area */
 .area p{
     font-size: 1.2rem;
     color: var(--texto-secundario);
@@ -86,6 +90,7 @@
     overflow:hidden;
     text-overflow: ellipsis;
 }
+/* header con titulo y el menu de tres puntos */
 .area-header{
     display: flex;
     align-items: center;
@@ -93,7 +98,6 @@
     margin-bottom: 20px;
 }
 .area-header h2{
-    /* text-align: center; */
     width:240px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -111,6 +115,7 @@
 .confuguracion-area img{
     width: 20px; height: 15px;
 }
+/* hover del menu de tres puntos */
 .confuguracion-area:hover{
     background-color: rgba(92, 91, 92, 0.2);
     border-radius: 5px;
@@ -122,7 +127,6 @@
     border-radius: 10px;
     border: solid 2px #6C5CE7; 
     background-color: #6C5CE7;
-    color: white;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -163,7 +167,10 @@
     display: flex;
     flex-direction: column;
 }
- .area-header h2, .area-header img, .area p, .confuguracion-area, .area-menu li, .area-menu a, .ver-mas a, .area-menu h2, .area-header, .nueva-area a,.area-contenedor{
+ .area-header h2, .area-header img, .area p, 
+ .confuguracion-area, .area-menu li, .area-menu a, 
+ .ver-mas a, .area-menu h2, .area-header, 
+ .nueva-area a,.area-contenedor{
     background-color: transparent;
 }
 /* menu desplegable de configuracion */
@@ -185,6 +192,7 @@
     height: 23px;
     justify-content: center;
 }
+/* hover del menu editar y eliminar */
 .area-menu li:hover{
     border-radius: 3px;
     background-color:rgba(92, 91, 92, 0.2);
@@ -204,7 +212,7 @@
 .area-menu.activo {
     display: flex;
 }
-/* iframes toggle */
+/* iframes toggle fondo oscuro*/
 #pantalla-oscura {
     position: fixed;
     top: 0;
@@ -218,6 +226,7 @@
 #pantalla-oscura.activo {
     display: block;
 }
+/* iframes toggle*/
 #iframe-contenedor {
     position: fixed;
     top: 50%;
