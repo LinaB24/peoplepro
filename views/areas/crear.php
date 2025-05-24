@@ -9,7 +9,7 @@
     <h3>Selecciona un color de fondo:</h3>
     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
         <?php
-        $colores = ['#C0C0C2', '#8AA3B8', '#BFA68C', '#8DB08D', '#D1C26A', '#BF7D82', '#7B7BCC', '#7BA38B'];
+        $colores = ['#ffeb3b', '#ff9800', '#f44336', '#f48fb1', '#ba68c8', '#80deea', '#9ccc65', '#795548','#263238'];
         foreach ($colores as $color) {
             echo '
             <label style="cursor: pointer;">

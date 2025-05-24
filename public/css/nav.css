@@ -1,7 +1,6 @@
 :root {
     --primario: #6C5CE7;
     --secundario: #2D3436;
-    --acento: #55EFC4;
     --fondo-claro:#F7F7F8;
     --fondo-nav: #EFEFF1;
     --texto-primario: #2D3436;
@@ -41,7 +40,7 @@ body {
     height: 40px;
     gap: 5px;
     cursor: pointer;
-    z-index: 9999;
+    z-index: 7777;
     border: none;
 }
 .menu-hamburguesa:hover {
@@ -93,7 +92,7 @@ body {
     font-family: "Libre Franklin", sans-serif;
     font-weight:900;
     margin-left: 20px;
-    z-index: 9999;
+    z-index: 7777;
     width: 150px;
     }
 /* nav desplegable  */

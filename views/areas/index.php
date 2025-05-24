@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Áreas de trabajo</title>
     <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
     <link rel="stylesheet" href="/peoplepro/public/css/areas.css">
@@ -54,14 +55,16 @@
             </div>
             <ul class="area-menu" id="area-menu-<?= $area['id'] ?>">
                 <h2>Configuración</h2>
-                <li id="toggleIframe" style="cursor: pointer;">✏️ Editar</li>
+                <li class="abrir-iframe" data-src="/peoplepro/public/area/editar/<?= $area['id'] ?>" style="cursor: pointer;">✏️ Editar</li>
                 <li><a href="/peoplepro/public/area/eliminar/<?= $area['id'] ?>" onclick="return confirm('¿Eliminar esta área?')">❌ Eliminar</a></li>
             </ul>
             <div class="color-fondo" style="background-color: <?= htmlspecialchars($area['color_fondo']) ?>;"></div>
         </div>
         <?php endforeach; ?>
-        <div id="iframe-contenedor">
-            <iframe id="iframe-editar" data-src="/peoplepro/public/area/editar/<?= $area['id'] ?>" width="100%" height="500px"></iframe>
+        <div id="pantalla-oscura">
+            <div id="iframe-contenedor">
+                <iframe id="iframe-editar" data-src="/peoplepro/public/area/editar/<?= $area['id'] ?>" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
         </div>
     </main>
     <script src="/peoplepro/public/js/iframesAreas.js"></script>

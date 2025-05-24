@@ -205,7 +205,30 @@
     display: flex;
 }
 /* iframes toggle */
-#iframe-contenedor{
+#pantalla-oscura {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 3;
+    display: none;
+}
+#pantalla-oscura.activo {
+    display: block;
+}
+#iframe-contenedor {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    width: 500px;
+    height: 500px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
     display: none;
 }
 #iframe-contenedor.activo {

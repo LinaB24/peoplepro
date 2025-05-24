@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Áreas de trabajo</title>
     <link rel="stylesheet" href="/peoplepro/public/css/iframesAreas.css">
@@ -13,31 +14,30 @@
     <h2>Editar Área</h2>
     <form action="/peoplepro/public/area/actualizar" method="POST">
         <input type="hidden" name="id" value="<?= $data['area']['id'] ?>">
-        <label>Nombre:</label><br>
-        <input type="text" name="nombre" value="<?= $data['area']['nombre'] ?>" required><br><br>
+        <label class="label">Nombre:</label>
+        <input type="text" name="nombre" value="<?= $data['area']['nombre'] ?>" required placeholder="Digita el nombre de área" class="input-nombre input"><br>
 
-        <label>Descripción:</label><br>
-        <textarea name="descripcion" rows="3"><?= $data['area']['descripcion'] ?></textarea><br><br>
+        <label class="label">Descripción:</label>
+        <textarea name="descripcion" rows="3" placeholder="Digita la descripción de area" class="input-descripcion input"><?= $data['area']['descripcion'] ?></textarea><br>
 
         <h3>Selecciona un color de fondo:</h3>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <div class="contenedor-colores">
             <?php
-            $colores = ['#C0C0C2', '#8AA3B8', '#BFA68C', '#8DB08D', '#D1C26A', '#BF7D82', '#7B7BCC', '#7BA38B'];
+            $colores = ['#ffeb3b', '#ff9800', '#f44336', '#f48fb1', '#ba68c8', '#80deea', '#9ccc65', '#00695c ', '#795548','#263238'];
             $colorActual = $area['color_fondo'] ?? '#F7F7F8';
             foreach ($colores as $color) {
                 $checked = ($color === $colorActual) ? 'checked' : '';
                 echo '
-                <label style="cursor: pointer;">
-                    <input type="radio" name="color_fondo" value="'.$color.'" style="display:none;" '.$checked.'>
-                    <div style="width: 40px; height: 40px; border-radius: 50%; background-color: '.$color.'; border: 2px solid #ccc;"></div>
+                <label class="color-opcion">
+                    <input type="radio" name="color_fondo" value="'.$color.'" '.$checked.'>
+                    <div class="color-circulo" style="background-color: '.$color.';"></div>
                 </label>';
             }
             ?>
         </div>
-        <input type="submit" value="Actualizar">
+        <input type="submit" value="Actualizar" class="boton actualizar-btn">
     </form>
-    <button onclick="cerrarIframe()">Cerrar iframe</button>
+    <button onclick="cerrarIframe()" class="boton">cancelar</button>
     <script src="/peoplepro/public/js/iframesAreas.js"></script>
 </body>
 </html>
-

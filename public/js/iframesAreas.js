@@ -1,17 +1,25 @@
-document.getElementById('toggleIframe').addEventListener('click', () => {
-  const contenedor = document.getElementById('iframe-contenedor');
-  const iframe = document.getElementById('iframe-editar');
+document.querySelectorAll('.abrir-iframe').forEach(boton => {
+  boton.addEventListener('click', () => {
+    const contenedor = document.getElementById('iframe-contenedor');
+    const iframe = document.getElementById('iframe-editar');
+    const overlay = document.getElementById('pantalla-oscura');
 
-  const isActive = contenedor.classList.contains('activo');
+    const url = boton.getAttribute('data-src');
 
-  if (!isActive && !iframe.src) {
-    iframe.src = iframe.getAttribute('data-src');
-  }
-
-  contenedor.classList.toggle('activo');
+    iframe.src = url;
+    contenedor.classList.add('activo');
+    overlay.classList.add('activo');
+  });
 });
-
-// cerrar el iframe
+// funcion de cerrar con el boton cancelar
 function cerrarIframe() {
-    window.parent.document.getElementById('iframe-contenedor').classList.remove('activo');
+  const parentDocument = window.parent.document;
+  const contenedor = parentDocument.getElementById('iframe-contenedor');
+  const overlay = parentDocument.getElementById('pantalla-oscura');
+  const iframe = parentDocument.getElementById('iframe-editar');
+  contenedor.classList.remove('activo');
+  overlay.classList.remove('activo');
+  iframe.src = '';
   }
+  // cerrar al hacer click afuera del iframe
+  document.getElementById('pantalla-oscura').addEventListener('click', cerrarIframe);
