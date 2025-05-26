@@ -35,7 +35,7 @@
             }
             ?>
         </div>
-        <input type="submit" value="Actualizar" class="boton actualizar-btn">
+        <input type="submit" value="Actualizar" class="boton aceptar-btn">
     </form>
     <button onclick="cerrarIframe()" class="boton">cancelar</button>
     <script src="/peoplepro/public/js/iframesAreas.js"></script>
