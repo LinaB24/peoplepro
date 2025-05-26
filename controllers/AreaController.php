@@ -30,13 +30,14 @@ class AreaController extends Controller {
     }
 
     public function actualizar() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $_POST['color_fondo'] = $this->validarColor($_POST['color_fondo'] ?? '#F7F7F8');
-            $this->area->actualizar($_POST);
-            header('Location: /peoplepro/public/area');
-            exit;
-        }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $_POST['color_fondo'] = $this->validarColor($_POST['color_fondo'] ?? '#F7F7F8');
+        $this->area->actualizar($_POST);
+        $this->view('areas/cerrarIframe'); // <- aquí carga el cierre
+        exit;
     }
+}
+
 
     public function eliminar($id) {
         $this->area->eliminar($id);
