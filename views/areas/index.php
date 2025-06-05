@@ -41,7 +41,7 @@
         </ul>
     </nav><br>
     <h2 class="area-titulo">Gestión de Áreas</h2>
-    <div class="nueva-area-contenedor"><button class="nueva-area" title="crear nueva área"><a href="/peoplepro/public/area/crear">+</a></button></div>
+    <div class="nueva-area-contenedor"><button class="nueva-area" title="crear nueva área">+</button></div>
     <main class="main">
         <?php foreach ($data['areas'] as $area): ?>
         <div class="area-contenedor">   
