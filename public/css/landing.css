@@ -1,0 +1,51 @@
+:root {
+    --primario: #A593E0;
+    --secundario:lightblue;
+    --texto-primario: #2D3436;
+    --texto-secundario: #636E72;
+    --fondo-oscuro:#0F0F0F;
+}
+body{
+    background-color:var(--fondo-oscuro);
+}
+.contenedor{
+    display: flex;
+    height: 100vh;
+    position: relative;
+    justify-content: space-evenly;
+}
+.contenedor-texto{
+    height: 70vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.titulo-landing{
+    font-size: 4.5rem;
+    color: rgb(147, 197, 214);
+    text-align: center;
+    margin-bottom: 20px;
+    width: 80%;
+}
+.titulo-landing span{
+    text-decoration: underline var(--primario);
+}
+.parrafo-landing{
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+    width: 60%;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+.contenedor img{
+    height: 600px;
+    width: 600px;
+    align-self: center;
+    margin-right: 20px;
+}
+.boton-home{
+    position: absolute;
+}
