@@ -1,32 +1,35 @@
 :root {
     --primario: #6C5CE7;
-    --secundario: #2D3436;
-    --acento: #55EFC4;
     --fondo-claro:#F7F7F8;
     --fondo-nav: #EFEFF1;
     --texto-primario: #2D3436;
     --texto-secundario: #636E72;
+    --box-shadow: #bdc2c4 0px 0px 2.5px;
 }
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+body {
     background-color: var(--fondo-claro);
 }
-.tituloBienvenida{
-    text-align: center;
-    font-size: 3.5rem;
-    margin-top: 5px;
-    color: #2D3436;
-}
+/* header */
 .header{
     background-color: #ffffff;
     padding: 10px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
     height: auto;
-    box-shadow: #bdc2c4 0px 0px 2.5px;
+    box-shadow: var(--box-shadow);
+}
+/* div izquierda con el logo y el menu hamburguesa */
+.izquierda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .menu-hamburguesa {
     display: flex;
@@ -37,8 +40,8 @@
     height: 40px;
     gap: 5px;
     cursor: pointer;
-    background-color: transparent;
-    z-index: 2;
+    z-index: 8888;
+    border: none;
 }
 .menu-hamburguesa:hover {
     border-radius: 50%;
@@ -89,15 +92,15 @@
     font-family: "Libre Franklin", sans-serif;
     font-weight:900;
     margin-left: 20px;
-    background-color: transparent;
-    z-index: 2;
+    z-index: 7777;
+    width: 150px;
     }
 /* nav desplegable  */
 .nav-desplegable{
-    position: absolute;
+    position: fixed; 
     top: 0;
     left: 0;
-    width: 250px;
+    width: 300px;
     height: 100vh;
     padding: 60px 10px;
     background-color: var(--fondo-nav);
@@ -108,6 +111,7 @@
     opacity: 0;
     pointer-events: none;
     transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: 7777;
 }
 .nav-desplegable.open{
     transform: translateX(0);
@@ -115,12 +119,21 @@
     pointer-events: auto;
 }
 /*nav desplegabe por dentro*/
+/* contenedor */
+.nav-lista{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* lista */
 .nav-lista  li{
     list-style: none;
     margin: 15px 0 0 0;
     padding: 9px;
     height: 45px;
 }
+/* texto de la lista */
 .nav-lista  a{
     text-decoration: none;
     color: var(--texto-primario);
@@ -129,12 +142,7 @@
     font-weight: 700;
     height: 45px;
 }
-.nav-lista{
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+/* hover del menu */
 .nav-lista li:hover{
     background-color: rgba(92, 91, 91, 0.1);
     transition: all 0.2s ease-in-out;
@@ -143,7 +151,39 @@
     color: var(--primario);
 }
 .nav-lista li, .nav-lista a, .nav-lista {
+    width: 250px;
+}
+/* barra de busqueda */
+.input-icono {
+    padding: 8px 10px 8px 32px;
+    background: url('../img/3844432-magnifier-search-zoom_110300.svg') no-repeat 10px center;
+    background-size: 16px 16px;
+    border: 3px solid #ccc;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+    width: 400px;
+    font-family: "Libre Franklin", sans-serif;
+    font-weight: 600;
+}
+.input-icono:focus {
+    border-color: #8679eb;
+}
+/* div derecha con el nombre y el icono de usuario */
+.derecha {
+    display: flex;
+    align-items: center;
+    width: 220px;
+}
+ .derecha, .izquierda, .buscador, .menu-hamburguesa, 
+ #logo, .nav-lista li, .nav-lista a, .nav-lista {
     background-color: transparent;
     box-sizing: border-box;
-    width: 250px;
+}
+/* titulo de bienvenida al usuario */
+.tituloBienvenida{
+    text-align: center;
+    font-size: 3.5rem;
+    margin-top: 5px;
+    color: #2D3436;
 }

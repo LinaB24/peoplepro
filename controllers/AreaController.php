@@ -16,9 +16,11 @@ class AreaController extends Controller {
     }
 
     public function guardar() {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $_POST['color_fondo'] = $this->validarColor($_POST['color_fondo'] ?? '#F7F7F8');
             $this->area->guardar($_POST);
             header('Location: /peoplepro/public/area');
+            exit;
         }
     }
 
@@ -28,14 +30,23 @@ class AreaController extends Controller {
     }
 
     public function actualizar() {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->area->actualizar($_POST);
-            header('Location: /peoplepro/public/area');
-        }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $_POST['color_fondo'] = $this->validarColor($_POST['color_fondo'] ?? '#F7F7F8');
+        $this->area->actualizar($_POST);
+        $this->view('areas/cerrarIframe'); // <- aquí carga el cierre
+        exit;
     }
+}
+
 
     public function eliminar($id) {
         $this->area->eliminar($id);
         header('Location: /peoplepro/public/area');
+        exit;
+    }
+
+    private function validarColor($color) {
+        return preg_match('/^#[a-fA-F0-9]{6}$/', $color) ? $color : '#F7F7F8';
     }
 }
+
