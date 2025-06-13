@@ -1,0 +1,85 @@
+:root {
+    --primario: #6C5CE7;
+    --fondo-claro:#F7F7F8;
+    --texto-primario: #2D3436;
+    --texto-secundario: #636E72;
+    --box-shadow: #bdc2c4 0px 0px 2.5px;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+.titulo-usuario{
+    text-align: center;
+    font-weight: 600;
+    font-size: 3rem;
+    color: var(--texto-primario);
+    margin-bottom: 20px;
+}
+.formulario-usuario{
+    width: 90%;
+    height: auto;
+    padding:20px;
+    box-shadow: var(--box-shadow);
+    margin: 0 auto;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: white;
+    overflow: hidden;
+}
+.formulario-usuario input{
+    border: none;
+    border-radius: 8px;
+    background-color: var(--fondo-claro);
+    padding: 10px;
+    width: 15vw;
+}
+.formulario-usuario input:focus, .formulario-usuario select:focus{
+    outline: lightblue solid 2px;
+}
+.formulario-usuario button{
+    border: 1px solid lightblue;
+    background-color: transparent;
+    color: lightblue;
+    border-radius: 8px;
+    padding: 10px;
+    transition: all 0.3s;
+}
+.formulario-usuario button:hover{
+    background-color: lightblue;
+    color: white;
+    transition: all 0.8s;
+}
+.formulario-usuario select{
+    background-color: var(--fondo-claro);
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    color:#636E72;
+}
+.formulario-usuario select option[selected]{
+    background-color: var(--fondo-claro);
+}
+.main-usuario{
+    width: 90%;
+    padding: 30px;
+    box-shadow: var(--box-shadow);
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: white;
+}
+#myTable{
+    border-radius: 8px !important; 
+    color: var(--texto-primario);
+}
+#myTable thead{
+    background-color: #2D3436;
+    color: white;
+}
+
+

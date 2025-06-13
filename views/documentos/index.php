@@ -1,28 +1,40 @@
-<h2>Documentos Subidos</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Documentos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <h2>📄 Lista de Documentos</h2>
+    <a href="index.php?controller=Documento&action=crear" class="btn btn-primary mb-3">+ Agregar Documento</a>
 
-<a href="/peoplepro/public/documento/crear">+ Subir nuevo documento</a>
-<br><br>
-
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Archivo</th>
-        <th>Fecha de subida</th>
-    </tr>
-    <?php foreach ($data['documentos'] as $doc): ?>
-        <tr>
-            <td><?= $doc['id'] ?></td>
-            <td><?= $doc['nombre'] ?></td>
-            <td>
-                <a href="/peoplepro/public/documento/eliminar/<?= $doc['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar este documento?')">Eliminar</a>
-                <a href="/peoplepro/public/documento/editar/<?= $doc['id'] ?>">Editar</a> |
-                <a href="/peoplepro/uploads/<?= $d['archivo'] ?>" target="_blank">Ver PDF</a>
-
-            </td>
-
-            <td><?= $doc['fecha_subida'] ?></td>
-        </tr>
-    <?php endforeach; ?>
-</table><br>
-<button><a href="/peoplepro/public/home/index">Inicio</a></button>
+    <?php if (!empty($documentos)) : ?>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Archivo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($documentos as $doc) : ?>
+                    <tr>
+                        <td><?= htmlspecialchars($doc['nombre']) ?></td>
+                        <td>
+                            <a href="public/uploads/<?= $doc['archivo'] ?>" target="_blank">Ver PDF</a>
+                        </td>
+                        <td>
+                            <a href="index.php?controller=Documento&action=editar&id=<?= $doc['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="index.php?controller=Documento&action=eliminar&id=<?= $doc['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este documento?')">Eliminar</a>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+    <?php else : ?>
+        <p>No hay documentos registrados.</p>
+    <?php endif ?>
+</body>
+</html>
