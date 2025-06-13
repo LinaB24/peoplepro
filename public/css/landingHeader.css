@@ -22,6 +22,7 @@
     position: sticky;
     top: 0;
     background-color: rgba(68, 77, 80, 0.3);
+    z-index: 1000;
 }
 /* logo (peoplepro) */
 .logo{
@@ -32,8 +33,11 @@
     align-items: center;
     font-size: 1.8rem;
     font-weight: 900;
-    color:#b895e6;
     padding-bottom: 5px;
+}
+.logo a {
+    text-decoration: none;
+    color:#b895e6;
 }
 /* barra de navegacion */
 .landing-nav{
