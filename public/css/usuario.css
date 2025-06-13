@@ -21,22 +21,23 @@
 .formulario-usuario{
     width: 90%;
     height: auto;
-    padding:20px 0;
+    padding:20px;
     box-shadow: var(--box-shadow);
     margin: 0 auto;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
     background-color: white;
+    overflow: hidden;
 }
 .formulario-usuario input{
     border: none;
     border-radius: 8px;
     background-color: var(--fondo-claro);
     padding: 10px;
-    width: 300px;
+    width: 15vw;
 }
 .formulario-usuario input:focus, .formulario-usuario select:focus{
     outline: lightblue solid 2px;
