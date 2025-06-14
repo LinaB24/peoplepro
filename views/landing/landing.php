@@ -12,6 +12,10 @@
 </head>
 <body>
     <header class="landing-header">
+        <button class="menu-hamburguesa">
+                <span class="linea"></span>
+                <span class="linea"></span>
+            </button>
         <p class="logo"><a href="#">peoplepro</a></p>
         <nav class="landing-nav">
             <ul>
@@ -103,15 +107,20 @@
     </main>
     <footer class="landing-footer">
         <div class="contenedor-footer">
-            <img src="/peoplepro/public/img/email.png" alt="correo" width="30px">
-            <p>contacto@peoplepro.com</p>
-
-            <img src="/peoplepro/public/img/celular.png" alt="celular" width="30px">
-            <p>+57 300 000 0000</p>
-
-            <img src="/peoplepro/public/img/ubicacion.png" alt="ubicacion" width="30px">
-            <p>Calle Ficticia #123, Bogotá, Colombia</p>
+            <div class="icono-footer">
+                <img src="/peoplepro/public/img/email.png" alt="correo" width="30px">
+                <p>contacto@peoplepro.com</p>
+            </div>
+            <div class="icono-footer">
+                <img src="/peoplepro/public/img/celular.png" alt="celular" width="30px">
+                <p>+57 300 000 0000</p>
+            </div>
+            <div class="icono-footer">
+                <img src="/peoplepro/public/img/ubicacion.png" alt="ubicacion" width="30px">
+                <p>Calle Ficticia #123, Bogotá, Colombia</p>
+            </div>
         </div>
     </footer>
+    <script src="/peoplepro/public/js/landing.js"></script>
 </body>
 </html>
