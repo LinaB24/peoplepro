@@ -1,103 +1,124 @@
 <?php
+require_once 'models/Documento.php';
 
-class DocumentoController extends Controller
+class DocumentoController
 {
+    private $documentoModel;
+
+    public function __construct()
+    {
+        $this->documentoModel = new Documento();
+    }
+
+    public function index()
+    {
+        $documentos = $this->documentoModel->obtenerTodos();
+        require_once 'views/documentos/index.php';
+    }
+
     public function crear()
     {
-        $this->view('documentos/crear');
+        require_once 'views/documentos/crear.php';
     }
 
     public function guardar()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $nombre = $_POST['nombre'];
-            $archivo = $_FILES['archivo'];
+            $nombre = $_POST['titulo'] ?? '';
+            $archivo = $_FILES['archivo'] ?? null;
 
-            if ($archivo['type'] === 'application/pdf') {
-                $rutaDestino = dirname(__DIR__) . '/uploads/' . basename($archivo['name']);
+            if ($archivo && $archivo['error'] === UPLOAD_ERR_OK) {
+                $nombreArchivo = uniqid() . "_" . basename($archivo['name']);
+                $rutaDestino = 'public/uploads/' . $nombreArchivo;
 
+                $extension = strtolower(pathinfo($nombreArchivo, PATHINFO_EXTENSION));
+                if ($extension !== 'pdf') {
+                    echo "Solo se permiten archivos PDF.";
+                    return;
+                }
 
-                if (move_uploaded_file($archivo['tmp_name'], $rutaDestino)) {
-                    $documento = $this->model('Documento');
-                    $documento->guardar($nombre, $rutaDestino);
-                    header('Location: /peoplepro/public/documento/index');
-                } else {
-                    echo "Error al subir el archivo.";
+                try {
+                    if (move_uploaded_file($archivo['tmp_name'], $rutaDestino)) {
+                        $this->documentoModel->guardar($nombre, $nombreArchivo);
+                        header('Location: index.php?controller=Documento&action=index');
+                        exit();
+                    } else {
+                        echo "Error al subir el archivo.";
+                    }
+                } catch (Exception $e) {
+                    error_log("Error al guardar documento: " . $e->getMessage());
+                    echo "Ocurrió un error al guardar el documento.";
                 }
             } else {
-                echo "Solo se permiten archivos PDF.";
+                echo "Archivo inválido o no enviado.";
             }
         }
     }
 
-    public function index()
-{
-    $documento = $this->model('Documento');
-    $documentos = $documento->obtenerTodos();
-
-    $this->view('documentos/index', ['documentos' => $documentos]);
-}
-
-public function eliminar($id)
-{
-    $documento = $this->model('Documento');
-    $doc = $documento->obtenerPorId($id);
-
-    if ($doc) {
-        // Eliminar el archivo físico del servidor
-        $rutaArchivo = dirname(__DIR__) . '/uploads/' . basename($doc['archivo']);
-        if (file_exists($rutaArchivo)) {
-            unlink($rutaArchivo); // Borra el archivo
-        }
-
-        // Eliminar el registro de la base de datos
-        $documento->eliminar($id);
-    }
-
-    header("Location: /peoplepro/public/documento/index");
-}
-
-public function editar($id)
-{
-    $documento = $this->model('Documento');
-    $doc = $documento->obtenerPorId($id);
-
-    $this->view('documentos/editar', ['documento' => $doc]);
-}
-
-public function actualizar()
-{
-    $id = $_POST['id'];
-    $nombre = $_POST['nombre'];
-
-    $documento = $this->model('Documento');
-    $docActual = $documento->obtenerPorId($id);
-
-    // Si se sube un nuevo archivo, reemplazarlo
-    if (!empty($_FILES['archivo']['name'])) {
-        $archivo = $_FILES['archivo'];
-        $nombreArchivo = time() . '_' . basename($archivo['name']);
-        $rutaDestino = dirname(__DIR__) . '/uploads/' . $nombreArchivo;
-
-        if (move_uploaded_file($archivo['tmp_name'], $rutaDestino)) {
-            // Eliminar el archivo anterior
-            $archivoAnterior = dirname(__DIR__) . '/uploads/' . basename($docActual['archivo']);
-            if (file_exists($archivoAnterior)) {
-                unlink($archivoAnterior);
+    public function eliminar()
+    {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            $doc = $this->documentoModel->buscarPorId($id);
+            if ($doc && isset($doc['archivo'])) {
+                $rutaArchivo = 'public/uploads/' . $doc['archivo'];
+                if (file_exists($rutaArchivo)) {
+                    unlink($rutaArchivo);
+                }
             }
 
-            // Actualizar con nuevo archivo
-            $documento->actualizar($id, $nombre, $nombreArchivo);
-        } else {
-            echo "Error al subir el nuevo archivo.";
-            return;
+            $this->documentoModel->eliminar($id);
         }
-    } else {
-        // Solo se cambia el nombre
-        $documento->actualizar($id, $nombre, null);
+        header('Location: index.php?controller=Documento&action=index');
+        exit();
     }
 
-    header("Location: /peoplepro/public/documento/index");
-}
+    public function editar()
+    {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            $documento = $this->documentoModel->buscarPorId($id);
+            require_once 'views/documentos/editar.php';
+        }
+    }
 
+    public function actualizar()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'] ?? null;
+            $nombre = $_POST['titulo'] ?? '';
+            $archivoNuevo = $_FILES['archivo'] ?? null;
+
+            $documentoExistente = $this->documentoModel->buscarPorId($id);
+            $nombreArchivo = $documentoExistente['archivo'];
+
+            if ($archivoNuevo && $archivoNuevo['error'] === UPLOAD_ERR_OK) {
+                $nuevoNombre = uniqid() . "_" . basename($archivoNuevo['name']);
+                $rutaDestino = 'public/uploads/' . $nuevoNombre;
+
+                $extension = strtolower(pathinfo($nuevoNombre, PATHINFO_EXTENSION));
+                if ($extension !== 'pdf') {
+                    echo "Solo se permiten archivos PDF.";
+                    return;
+                }
+
+                try {
+                    if (move_uploaded_file($archivoNuevo['tmp_name'], $rutaDestino)) {
+                        // Eliminar archivo viejo
+                        $archivoViejo = 'public/uploads/' . $nombreArchivo;
+                        if (file_exists($archivoViejo)) {
+                            unlink($archivoViejo);
+                        }
+                        $nombreArchivo = $nuevoNombre;
+                    }
+                } catch (Exception $e) {
+                    error_log("Error al subir nuevo archivo: " . $e->getMessage());
+                }
+            }
+
+            $this->documentoModel->actualizar($id, $nombre, $nombreArchivo);
+            header('Location: index.php?controller=Documento&action=index');
+            exit();
+        }
+    }
 }

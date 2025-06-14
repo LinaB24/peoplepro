@@ -1,53 +1,77 @@
 <?php
+require_once __DIR__ . '/../config/database.php';
 
 class Documento
 {
-    private $conn;
+    private $db;
 
     public function __construct()
     {
-        $this->conn = new PDO("mysql:host=localhost;dbname=peoplepro", "root", "");
+        $conexion = new Database();
+        $this->db = $conexion->connect();
     }
 
     public function guardar($nombre, $archivo)
     {
-        $stmt = $this->conn->prepare("INSERT INTO documentos (nombre, archivo) VALUES (:nombre, :archivo)");
-        $stmt->bindParam(':nombre', $nombre);
-        $stmt->bindParam(':archivo', $archivo);
-        return $stmt->execute();
+        try {
+            $stmt = $this->db->prepare("INSERT INTO documentos (nombre, archivo) VALUES (?, ?)");
+            $stmt->execute([$nombre, $archivo]);
+            return true;
+        } catch (PDOException $e) {
+            error_log("Error al guardar documento: " . $e->getMessage());
+            return false;
+        }
     }
 
     public function obtenerTodos()
-{
-    $stmt = $this->conn->prepare("SELECT * FROM documentos ORDER BY fecha_subida DESC");
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
-
-public function obtenerPorId($id)
-{
-    $stmt = $this->conn->prepare("SELECT * FROM documentos WHERE id = ?");
-    $stmt->execute([$id]);
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
-
-public function eliminar($id)
-{
-    $stmt = $this->conn->prepare("DELETE FROM documentos WHERE id = ?");
-    return $stmt->execute([$id]);
-}
-
-public function actualizar($id, $nombre, $nuevoArchivo = null)
-{
-    if ($nuevoArchivo) {
-        $stmt = $this->conn->prepare("UPDATE documentos SET nombre = ?, archivo = ? WHERE id = ?");
-        return $stmt->execute([$nombre, $nuevoArchivo, $id]);
-    } else {
-        $stmt = $this->conn->prepare("UPDATE documentos SET nombre = ? WHERE id = ?");
-        return $stmt->execute([$nombre, $id]);
+    {
+        try {
+            $stmt = $this->db->query("SELECT * FROM documentos ORDER BY id DESC");
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error al obtener documentos: " . $e->getMessage());
+            return [];
+        }
     }
-}
 
+    public function eliminar($id)
+    {
+        try {
+            $stmt = $this->db->prepare("DELETE FROM documentos WHERE id = ?");
+            $stmt->execute([$id]);
+            return $stmt->rowCount();
+        } catch (PDOException $e) {
+            error_log("Error al eliminar documento: " . $e->getMessage());
+            return false;
+        }
+    }
 
+    public function buscarPorId($id)
+    {
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM documentos WHERE id = ?");
+            $stmt->execute([$id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error al buscar documento: " . $e->getMessage());
+            return null;
+        }
+    }
+
+    public function actualizar($id, $nombre, $archivo = null)
+    {
+        try {
+            if ($archivo) {
+                $stmt = $this->db->prepare("UPDATE documentos SET nombre = ?, archivo = ? WHERE id = ?");
+                $stmt->execute([$nombre, $archivo, $id]);
+            } else {
+                $stmt = $this->db->prepare("UPDATE documentos SET nombre = ? WHERE id = ?");
+                $stmt->execute([$nombre, $id]);
+            }
+            return true;
+        } catch (PDOException $e) {
+            error_log("Error al actualizar documento: " . $e->getMessage());
+            return false;
+        }
+    }
 }
