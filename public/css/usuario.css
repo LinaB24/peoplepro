@@ -26,6 +26,7 @@
     margin: 0 auto;
     border-radius: 10px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 20px;
@@ -37,7 +38,7 @@
     border-radius: 8px;
     background-color: var(--fondo-claro);
     padding: 10px;
-    width: 15vw;
+    width: 200px;
 }
 .formulario-usuario input:focus, .formulario-usuario select:focus{
     outline: lightblue solid 2px;
@@ -72,14 +73,37 @@
     margin: 0 auto;
     border-radius: 10px;
     background-color: white;
+    overflow: hidden;
 }
-#myTable{
-    border-radius: 8px !important; 
-    color: var(--texto-primario);
+#myTable {
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  background-color: white;
 }
-#myTable thead{
-    background-color: #2D3436;
-    color: white;
+#myTable thead th {
+  background-color:rgb(78, 78, 78);
+  color: white;
+  font-weight: bold;
+  text-align: center;
 }
-
-
+#myTable tbody td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    font-weight: 500;
+}
+.bi-clipboard-check, .bi-pencil-fill, .bi-trash3-fill {
+    font-size: 1.3rem;
+    margin-right: 5px;
+}
+.bi-trash3-fill{
+    color: rgb(189, 108, 108);
+}
+.bi-pencil-fill{
+    color: rgb(106, 190, 216);
+}
+.bi-clipboard-check{
+   color: rgb(137, 216, 106);
+}
