@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -15,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
     <link rel="stylesheet" href="/peoplepro/public/css/usuario.css">
+    <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
     
 
 </head>
@@ -33,7 +35,17 @@
         </form>
         <div class="derecha">
             <p><?= htmlspecialchars($_SESSION["usuario"] ?? 'Usuario') ?></p>
+            <button><i class="bi bi-gear"></i></button>
         </div>
+        <nav class="nav-seccion">
+            <li>
+                <select id="tema-select">
+                    <option value="claro">Claro</option>
+                    <option value="oscuro">Oscuro</option>
+                </select>
+            </li>
+            <li><a href="#">Cerrar sesión</a></li>
+        </nav>
     </header>
     <nav class="nav-desplegable" id="nav-desplegable">
         <ul class="nav-lista">

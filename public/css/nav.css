@@ -1,10 +1,25 @@
-:root {
-    --primario: #6C5CE7;
-    --fondo-claro:#F7F7F8;
-    --fondo-nav: #EFEFF1;
-    --texto-primario: #2D3436;
-    --texto-secundario: #636E72;
-    --box-shadow: #bdc2c4 0px 0px 2.5px;
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fondo: #202428;
+        --fondo-header:#2B3035;
+        --texto-primario: #ffffff;
+        --texto-secundario: #bdc2c4;
+        --color-logo:#b895e6;
+        --color-icono-menu: #b895e6;
+        --box-shadow:trasparent;
+    }
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --fondo: #F7F7F8;
+        --fondo-header: #ffffff;
+        --texto-primario: #2D3436;
+        --texto-secundario: #636E72;
+        --color-logo: #2D3436;
+        --color-icono-menu: #b895e6;
+        --box-shadow: #bdc2c4 0px 0px 2.5px;
+    }
+    
 }
 *{
     margin: 0;
@@ -12,11 +27,11 @@
     box-sizing: border-box;
 }
 body {
-    background-color: var(--fondo-claro);
+    background-color: var(--fondo);
 }
 /* header */
 .header{
-    background-color: #ffffff;
+    background-color: var(--fondo-header);
     padding: 10px;
     display: flex;
     align-items: center;
@@ -52,7 +67,7 @@ body {
     position: relative;
     width: 20px;
     height: 2px;
-    background-color: var(--primario);
+    background-color: var(--color-icono-menu);
     border-radius: 10px;
     transition: all 0.5s ease-in-out;
 }
@@ -88,7 +103,7 @@ body {
     white-space: pre-wrap;
     padding: 0 5px 5px 0;
     animation: blink-caret 0.75s step-end infinite;
-    color: var(--texto-primario);
+    color: var(--color-logo);
     font-family: "Libre Franklin", sans-serif;
     font-weight:900;
     margin-left: 20px;
