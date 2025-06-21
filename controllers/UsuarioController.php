@@ -1,144 +1,57 @@
 <?php
-require_once '../models/User.php';
-require_once '../models/Area.php'; // Asegúrate de requerir el modelo de área también
+require_once __DIR__ . '/../models/Usuario.php';
 
-class UsuarioController
-{
+class UsuarioController {
     private $userModel;
 
-    public function __construct()
-    {
-        $this->userModel = new User();
+    public function __construct() {
+        $this->userModel = new Usuario();
     }
 
-        public function index()
-    {
-        $data['usuarios'] = $this->userModel->obtenerTodos();
+    public function login() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $email = $_POST['email'] ?? '';
+            $password = $_POST['password'] ?? '';
 
-        $areaModel = new Area();
-        $data['areas'] = $areaModel->getAll();
+            if (empty($email) || empty($password)) {
+                $error = "Todos los campos son obligatorios";
+                require_once __DIR__ . '/../views/login/index.php';
+                return;
+            }
 
-        $this->view('usuarios/index', $data);
-    }
+            $resultado = $this->userModel->login($email, $password);
 
-    public function asignar_area($id = null)
-    {
-        if ($id === null) {
-            header('Location: /peoplepro/public/usuario');
-            exit;
-        }
-
-        $usuarioModel = new User();
-        $usuario = $usuarioModel->obtenerPorId($id);
-
-        if (!$usuario) {
-            header('Location: /peoplepro/public/usuario');
-            exit;
-        }
-
-        $areaModel = new Area();
-        $areas = $areaModel->getAll();
-
-        $data = [
-            'usuario' => $usuario,
-            'areas' => $areas
-        ];
-
-        $this->view('usuarios/asignar_area', $data);
-    }
-
-    public function guardar_asignacion()
-    {
-        echo "Método alcanzado<br>"; // ← Mensaje de prueba
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $userId = $_POST['user_id'];
-            $areaId = $_POST['area_id'];
-
-            if ($this->userModel->actualizarArea($userId, $areaId)) {
-                header('Location: /peoplepro/public/usuario');
+            if (isset($resultado['usuario'])) {
+                session_start();
+                $_SESSION['usuario_id'] = $resultado['usuario']['id'];
+                $_SESSION['usuario_nombre'] = $resultado['usuario']['nombre'];
+                header('Location: index.php?action=dashboard');
                 exit;
             } else {
-                echo "Error al actualizar el área del usuario.";
+                $error = $resultado['error'];
+                require_once __DIR__ . '/../views/login/index.php';
             }
+        } else {
+            require_once __DIR__ . '/../views/login/index.php';
         }
     }
 
-    public function editar($id = null)
-{
-    if ($id === null) {
-        header('Location: /peoplepro/public/usuario');
-        exit;
-    }
-
-    $usuario = $this->userModel->obtenerPorId($id);
-    if (!$usuario) {
-        header('Location: /peoplepro/public/usuario');
-        exit;
-    }
-
-    // Cargar todas las áreas para el select
-    $areaModel = new Area();
-    $areas = $areaModel->getAll();
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $data = [
-            'id' => $_POST['id'],
-            'nombre' => $_POST['nombre'],
-            'email' => $_POST['email'],
-            'rol' => $_POST['rol'],
-            'area_id' => $_POST['area_id'] ?? null
-        ];
-        if ($this->userModel->actualizar($data)) {
-            header('Location: /peoplepro/public/usuario');
+    public function dashboard() {
+        if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+        }
+        if (!isset($_SESSION['usuario_id'])) {
+            header('Location: index.php?action=login');
             exit;
-        } else {
-            echo "Error al actualizar el usuario.";
         }
-    } else {
-        $this->view('usuarios/editar', [
-            'usuario' => $usuario,
-            'areas' => $areas
-        ]);
+
+        $nombre = $_SESSION['usuario_nombre'];
+        require_once __DIR__ . '/../views/dashboard/index.php';
+    }
+
+    public function logout() {
+        session_start();
+        session_destroy();
+        header('Location: index.php?action=login');
     }
 }
-
-
-    public function eliminar($id)
-    {
-        if ($this->userModel->eliminar($id)) {
-            header('Location: /peoplepro/public/usuario');
-        } else {
-            echo "Error al eliminar el usuario.";
-        }
-    }
-
-    private function view($vista, $data = [])
-    {
-        extract($data); // Esto convierte ['usuario' => $usuario] en $usuario dentro de la vista
-        require_once "../views/$vista.php";
-    }
-
-        public function crear()
-{
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $data = [
-            'nombre' => $_POST['nombre'],
-            'email' => $_POST['email'],
-            'password' => password_hash($_POST['password'], PASSWORD_DEFAULT), // Hashea la contraseña
-            'rol' => $_POST['rol'],
-            'area_id' => $_POST['area_id']
-        ];
-
-        if ($this->userModel->crear($data)) {
-            header('Location: /peoplepro/public/usuario');
-            exit;
-        } else {
-            echo "Error al crear el usuario.";
-        }
-    }
-}
-
-
-}
-

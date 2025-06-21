@@ -1,11 +1,23 @@
 <?php
-require_once '../core/App.php';
-require_once '../core/Controller.php';
+session_start();
+require_once __DIR__ . '/../controllers/UsuarioController.php';
 
-spl_autoload_register(function($class) {
-    if (file_exists("../models/$class.php")) {
-        require_once "../models/$class.php";
-    }
-});
+// Definir la acción desde la URL (?action=...)
+$action = $_GET['action'] ?? 'login';
 
-$app = new App();
+$controller = new UsuarioController();
+
+switch ($action) {
+    case 'login':
+        $controller->login();
+        break;
+    case 'dashboard':
+        $controller->dashboard();
+        break;
+    case 'logout':
+        $controller->logout();
+        break;
+    default:
+        echo "Ruta no válida.";
+        break;
+}

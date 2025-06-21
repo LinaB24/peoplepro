@@ -25,7 +25,7 @@
                 <li><a href="#contacto">contactanos</a></li>
             </ul>
         </nav>
-        <a href="" class="login">iniciar sesión</a>
+        <a href="/peoplepro/views/login/index.php" class="login">iniciar sesión</a>
     </header>
     <main>
         <section id="home" class="contenedor">
