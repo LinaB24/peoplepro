@@ -4,20 +4,16 @@ class Database {
     private $db_name = "peoplepro";
     private $username = "root";
     private $password = "";
-    private static $conn = null;
+    private $conn;
 
-    public static function getConnection() {
-        if (!self::$conn) {
-            try {
-                self::$conn = new PDO(
-                    "mysql:host=localhost;dbname=peoplepro;charset=utf8mb4",
-                    "root", ""
-                );
-                self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch (PDOException $e) {
-                die("Error en la conexión: " . $e->getMessage());
-            }
+    public function connect() {
+        $this->conn = null;
+        try {
+            $this->conn = new PDO("mysql:host=$this->host;dbname=$this->db_name", $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            die("Error en la conexión: " . $e->getMessage());
         }
-        return self::$conn;
+        return $this->conn;
     }
 }

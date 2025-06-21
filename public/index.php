@@ -2,9 +2,7 @@
 session_start();
 require_once __DIR__ . '/../controllers/UsuarioController.php';
 
-// Definir la acción desde la URL (?action=...)
-$action = $_GET['action'] ?? 'login';
-
+$action = $_GET['action'] ?? 'landing';
 $controller = new UsuarioController();
 
 switch ($action) {
@@ -14,10 +12,8 @@ switch ($action) {
     case 'dashboard':
         $controller->dashboard();
         break;
-    case 'logout':
-        $controller->logout();
-        break;
+    case 'landing':
     default:
-        echo "Ruta no válida.";
+        require_once __DIR__ . '/../views/landing/index.php';
         break;
 }

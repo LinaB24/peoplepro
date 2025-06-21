@@ -5,7 +5,8 @@ class Usuario {
     private $conn;
 
     public function __construct() {
-        $this->conn = Database::getConnection();
+        $db = new Database();
+        $this->conn = $db->connect();
     }
 
     public function login($email, $password) {
