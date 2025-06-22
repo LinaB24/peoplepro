@@ -1,9 +1,10 @@
 <?php
+    require_once __DIR__ . '/../core/Controller.php';
 class BeneficioController extends Controller {
     private $beneficio;
 
     public function __construct() {
-        $this->beneficio = new Beneficio();
+        $this->beneficio = $this->model('Beneficio');
     }
 
     public function index() {
@@ -16,20 +17,21 @@ class BeneficioController extends Controller {
     }
 
     public function guardar() {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->beneficio->guardar($_POST);
             header('Location: /peoplepro/public/beneficio');
+            exit;
         }
     }
 
-public function editar($id) {
-    $data['beneficio'] = $this->beneficio->obtenerPorId($id);
-    $this->view('beneficios/editar', $data);
-}
+    public function editar($id) {
+        $data['beneficio'] = $this->beneficio->obtenerPorId($id);
+        $this->view('beneficios/editar', $data);
+    }
 
-public function eliminar($id) {
-    $this->beneficio->eliminar($id);
-    header('Location: /peoplepro/public/beneficio');
-}
-
+    public function eliminar($id) {
+        $this->beneficio->eliminar($id);
+        header('Location: /peoplepro/public/beneficio');
+        exit;
+    }
 }

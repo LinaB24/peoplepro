@@ -1,11 +1,7 @@
 <?php
-class Area {
-    private $conn;
+require_once __DIR__ . '/../core/Model.php';
 
-    public function __construct() {
-        $this->conn = Database::getConnection();
-    }
-
+class Area extends Model {
     public function getAll() {
         $stmt = $this->conn->prepare("SELECT * FROM `areas`");
         $stmt->execute();
@@ -20,23 +16,21 @@ class Area {
 
     public function guardar($data) {
         $stmt = $this->conn->prepare(
-            "INSERT INTO `areas` (`nombre`, `descripcion`, `color_fondo`) VALUES (?, ?, ?)"
+            "INSERT INTO `areas` (`nombre`, `descripcion`) VALUES (?, ?)"
         );
         return $stmt->execute([
             $data['nombre'],
-            $data['descripcion'] ?? null,
-            $data['color_fondo'] ?? '#6C5CE7'
+            $data['descripcion'] ?? null
         ]);
     }
 
     public function actualizar($data) {
         $stmt = $this->conn->prepare(
-            "UPDATE `areas` SET `nombre` = ?, `descripcion` = ?, `color_fondo` = ? WHERE `id` = ?"
+            "UPDATE `areas` SET `nombre` = ?, `descripcion` = ? WHERE `id` = ?"
         );
         return $stmt->execute([
             $data['nombre'],
             $data['descripcion'] ?? null,
-            $data['color_fondo'] ?? '#6C5CE7',
             $data['id']
         ]);
     }

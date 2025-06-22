@@ -25,15 +25,15 @@
     </header>
     <nav class="nav-desplegable" id="nav-desplegable">
         <ul class="nav-lista">
-            <li><a href="/peoplepro/public/home/index">Inicio</a></li>
-            <li><a href="/peoplepro/public/usuario/index">Usuarios</a></li>
-            <li><a href="/peoplepro/public/permiso/index">Permisos</a></li>
-            <li><a href="/peoplepro/public/beneficio/index">Beneficios</a></li>
-            <li><a href="/peoplepro/public/visitante/index">Visitantes Externos</a></li>
-            <li><a href="/peoplepro/public/documento/index">Documentos</a></li>
-            <li><a href="/peoplepro/public/capacitacion/index">Capacitaciones</a></li>
-            <li><a href="/peoplepro/public/evaluacion/index">Evaluaciones</a></li>
-            <li><a href="/peoplepro/public/area/index">Áreas</a></li>
+            <li><a href="/peoplepro/public/index.php?action=dashboard">Inicio</a></li>
+            <li><a href="/peoplepro/public/index.php?action=usuario">Usuarios</a></li>
+            <li><a href="/peoplepro/public/index.php?action=permiso">Permisos</a></li>
+            <li><a href="/peoplepro/public/index.php?action=beneficio">Beneficios</a></li>
+            <li><a href="/peoplepro/public/index.php?action=visitante">Visitantes Externos</a></li>
+            <li><a href="/peoplepro/public/index.php?action=documento">Documentos</a></li>
+            <li><a href="/peoplepro/public/index.php?action=capacitacion">Capacitaciones</a></li>
+            <li><a href="/peoplepro/public/index.php?action=evaluacion">Evaluaciones</a></li>
+            <li><a href="/peoplepro/public/index.php?action=area">Áreas</a></li>
         </ul>
     </nav>
     <h1 class="tituloBienvenida">Welcome, <?= htmlspecialchars($nombre) ?>! 👋</h1>

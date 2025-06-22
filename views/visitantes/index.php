@@ -19,49 +19,57 @@
         <input type="text" placeholder="Buscar" class="input-icono">
         </form>
         <div class="derecha">
-            <p><?= htmlspecialchars($_SESSION["usuario"] ?? 'Usuario') ?></p>
+            <p><?= htmlspecialchars($_SESSION['usuario_nombre'] ?? 'Invitado') ?></p>
+            <a href="index.php?action=logout">Cerrar sesión</a>
         </div>
     </header>
     <nav class="nav-desplegable" id="nav-desplegable">
         <ul class="nav-lista">
-            <li><a href="/peoplepro/public/home/index">Inicio</a></li>
-            <li><a href="/peoplepro/public/usuario/index">Usuarios</a></li>
-            <li><a href="/peoplepro/public/permiso/index">Permisos</a></li>
-            <li><a href="/peoplepro/public/beneficio/index">Beneficios</a></li>
-            <li><a href="/peoplepro/public/visitante/index">Visitantes Externos</a></li>
-            <li><a href="/peoplepro/public/documento/index">Documentos</a></li>
-            <li><a href="/peoplepro/public/capacitacion/index">Capacitaciones</a></li>
-            <li><a href="/peoplepro/public/evaluacion/index">Evaluaciones</a></li>
-            <li><a href="/peoplepro/public/area/index">Áreas</a></li>
+            <li><a href="/peoplepro/public/index.php?action=dashboard">Inicio</a></li>
+            <li><a href="/peoplepro/public/index.php?action=usuario">Usuarios</a></li>
+            <li><a href="/peoplepro/public/index.php?action=permiso">Permisos</a></li>
+            <li><a href="/peoplepro/public/index.php?action=beneficio">Beneficios</a></li>
+            <li><a href="/peoplepro/public/index.php?action=visitante">Visitantes Externos</a></li>
+            <li><a href="/peoplepro/public/index.php?action=documento">Documentos</a></li>
+            <li><a href="/peoplepro/public/index.php?action=capacitacion">Capacitaciones</a></li>
+            <li><a href="/peoplepro/public/index.php?action=area">Áreas</a></li>
         </ul>
     </nav><br>
     <h2>Lista de Visitantes Externos</h2>
-    <a href="/peoplepro/public/visitante/crear">Registrar nuevo visitante</a>
-    <table border="1" cellpadding="5" cellspacing="0">
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Documento</th>
-            <th>Empresa</th>
-            <th>Fecha Ingreso</th>
-            <th>Motivo</th>
-            <th>Acciones</th>
-        </tr>
-        <?php foreach($data['visitantes'] as $v): ?>
-            <tr>
-                <td><?= $v['id'] ?></td>
-                <td><?= $v['nombre'] ?></td>
-                <td><?= $v['documento'] ?></td>
-                <td><?= $v['empresa'] ?></td>
-                <td><?= $v['fecha_ingreso'] ?></td>
-                <td><?= $v['motivo'] ?></td>
-                <td>
-                    <a href="/peoplepro/public/visitante/editar/<?= $v['id'] ?>">Editar</a> |
-                    <a href="/peoplepro/public/visitante/eliminar/<?= $v['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar?')">Eliminar</a>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </table><br>
+        <a href="/peoplepro/public/visitante/crear">Registrar nuevo visitante</a>
+        <table border="1" cellpadding="5" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Documento</th>
+                    <th>Empresa</th>
+                    <th>Fecha Ingreso</th>
+                    <th>Motivo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php if (!empty($data['visitantes'])): ?>
+                <?php foreach ($data['visitantes'] as $v): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($v['id']) ?></td>
+                        <td><?= htmlspecialchars($v['nombre']) ?></td>
+                        <td><?= htmlspecialchars($v['documento']) ?></td>
+                        <td><?= htmlspecialchars($v['empresa']) ?></td>
+                        <td><?= htmlspecialchars($v['fecha_ingreso']) ?></td>
+                        <td><?= htmlspecialchars($v['motivo']) ?></td>
+                        <td>
+                            <a href="/peoplepro/public/visitante/editar/<?= $v['id'] ?>">Editar</a> |
+                            <a href="/peoplepro/public/visitante/eliminar/<?= $v['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar?')">Eliminar</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr><td colspan="7">No hay visitantes registrados.</td></tr>
+            <?php endif; ?>
+            </tbody>
+        </table><br>
     <script src="/peoplepro/public/js/nav.js"></script>
 </body>
 </html>

@@ -1,10 +1,18 @@
 <?php
+require_once __DIR__ . '/../core/Controller.php';
+
 class VisitanteController extends Controller
 {
+    private $visitanteModel;
+
+    public function __construct()
+    {
+        $this->visitanteModel = $this->model('Visitante');
+    }
+
     public function index()
     {
-        $visitante = $this->model('Visitante');
-        $data = ['visitantes' => $visitante->obtenerTodos()];
+        $data = ['visitantes' => $this->visitanteModel->obtenerTodos()];
         $this->view('visitantes/index', $data);
     }
 
@@ -15,46 +23,50 @@ class VisitanteController extends Controller
 
     public function guardar()
     {
-        $visitante = $this->model('Visitante');
-
-        $visitante->insertar(
-            $_POST['nombre'],
-            $_POST['documento'],
-            $_POST['empresa'],
-            $_POST['fecha_ingreso'],
-            $_POST['motivo']
-        );
-
-        header("Location: /peoplepro/public/visitante/index");
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->visitanteModel->insertar(
+                $_POST['nombre'] ?? '',
+                $_POST['documento'] ?? '',
+                $_POST['empresa'] ?? '',
+                $_POST['fecha_ingreso'] ?? '',
+                $_POST['motivo'] ?? ''
+            );
+            $this->redirect('/peoplepro/public/visitante/index');
+        }
     }
 
-    public function editar($id)
+    public function editar($id = null)
     {
-        $visitante = $this->model('Visitante');
-        $data = ['visitante' => $visitante->obtenerPorId($id)];
-        $this->view('visitantes/editar', $data);
+        if ($id === null) {
+            $this->redirect('/peoplepro/public/visitante/index');
+        }
+        $visitante = $this->visitanteModel->obtenerPorId($id);
+        if (!$visitante) {
+            $this->redirect('/peoplepro/public/visitante/index');
+        }
+        $this->view('visitantes/editar', ['visitante' => $visitante]);
     }
 
     public function actualizar()
     {
-        $visitante = $this->model('Visitante');
-
-        $visitante->actualizar(
-            $_POST['id'],
-            $_POST['nombre'],
-            $_POST['documento'],
-            $_POST['empresa'],
-            $_POST['fecha_ingreso'],
-            $_POST['motivo']
-        );
-
-        header("Location: /peoplepro/public/visitante/index");
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->visitanteModel->actualizar(
+                $_POST['id'] ?? null,
+                $_POST['nombre'] ?? '',
+                $_POST['documento'] ?? '',
+                $_POST['empresa'] ?? '',
+                $_POST['fecha_ingreso'] ?? '',
+                $_POST['motivo'] ?? ''
+            );
+            $this->redirect('/peoplepro/public/visitante/index');
+        }
     }
 
-    public function eliminar($id)
+    public function eliminar($id = null)
     {
-        $visitante = $this->model('Visitante');
-        $visitante->eliminar($id);
-        header("Location: /peoplepro/public/visitante/index");
+        if ($id !== null) {
+            $this->visitanteModel->eliminar($id);
+        }
+        $this->redirect('/peoplepro/public/visitante/index');
     }
 }

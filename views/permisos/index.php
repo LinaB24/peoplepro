@@ -19,41 +19,48 @@
         <input type="text" placeholder="Buscar" class="input-icono">
         </form>
         <div class="derecha">
-            <p><?= htmlspecialchars($_SESSION["usuario"] ?? 'Usuario') ?></p>
+            <p><?= htmlspecialchars($_SESSION['usuario_nombre'] ?? 'Invitado') ?></p>
+            <a href="index.php?action=logout">Cerrar sesión</a>
         </div>
     </header>
     <nav class="nav-desplegable" id="nav-desplegable">
         <ul class="nav-lista">
-            <li><a href="/peoplepro/public/home/index">Inicio</a></li>
-            <li><a href="/peoplepro/public/usuario/index">Usuarios</a></li>
-            <li><a href="/peoplepro/public/permiso/index">Permisos</a></li>
-            <li><a href="/peoplepro/public/beneficio/index">Beneficios</a></li>
-            <li><a href="/peoplepro/public/visitante/index">Visitantes Externos</a></li>
-            <li><a href="/peoplepro/public/documento/index">Documentos</a></li>
-            <li><a href="/peoplepro/public/capacitacion/index">Capacitaciones</a></li>
-            <li><a href="/peoplepro/public/evaluacion/index">Evaluaciones</a></li>
-            <li><a href="/peoplepro/public/area/index">Áreas</a></li>
+            <li><a href="/peoplepro/public/index.php?action=dashboard">Inicio</a></li>
+            <li><a href="/peoplepro/public/index.php?action=usuario">Usuarios</a></li>
+            <li><a href="/peoplepro/public/index.php?action=permiso">Permisos</a></li>
+            <li><a href="/peoplepro/public/index.php?action=beneficio">Beneficios</a></li>
+            <li><a href="/peoplepro/public/index.php?action=visitante">Visitantes Externos</a></li>
+            <li><a href="/peoplepro/public/index.php?action=documento">Documentos</a></li>
+            <li><a href="/peoplepro/public/index.php?action=capacitacion">Capacitaciones</a></li>
+            <li><a href="/peoplepro/public/index.php?action=area">Áreas</a></li>
         </ul>
     </nav><br>
     <h2>Gestión de Permisos</h2>
-    <a href="/peoplepro/public/permiso/crear">➕ Nuevo Permiso</a>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Tipo</th>
-            <th>Acciones</th>
-        </tr>
-        <?php foreach($data['permisos'] as $permiso): ?>
+
+    <a href="/peoplepro/public/index.php?action=permiso&method=crear">➕ Nuevo Permiso</a>
+
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
             <tr>
-                <td><?= $permiso['id'] ?></td>
-                <td><?= $permiso['tipo'] ?></td>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($permisos as $permiso): ?>
+            <tr>
+                <td><?= htmlspecialchars($permiso['id']) ?></td>
+                <td><?= htmlspecialchars($permiso['tipo']) ?></td>
                 <td>
-                    <a href="/peoplepro/public/permiso/editar/<?= $permiso['id'] ?>">✏️ Editar</a> |
-                    <a href="/peoplepro/public/permiso/eliminar/<?= $permiso['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar este permiso?')">🗑️ Eliminar</a>
+                    <a href="/peoplepro/public/index.php?action=permiso&method=editar&id=<?= $permiso['id'] ?>">✏️ Editar</a> |
+                    <a href="/peoplepro/public/index.php?action=permiso&method=eliminar&id=<?= $permiso['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar este permiso?')">🗑️ Eliminar</a>
                 </td>
             </tr>
-        <?php endforeach; ?>
-    </table><br>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
     <script src="/peoplepro/public/js/nav.js"></script>
 </body>
 </html>

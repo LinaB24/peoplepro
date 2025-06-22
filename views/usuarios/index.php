@@ -34,52 +34,58 @@
         <input type="text" placeholder="Buscar" class="input-icono">
         </form>
         <div class="derecha">
-            <p><?= htmlspecialchars($_SESSION["usuario"] ?? 'Usuario') ?></p>
-            <button><i class="bi bi-gear"></i></button>
+            <p><?= htmlspecialchars($_SESSION['usuario_nombre'] ?? 'Invitado') ?></p>
+            <a href="index.php?action=logout">Cerrar sesión</a>
         </div>
-        <nav class="nav-seccion">
-            <li>
-                <select id="tema-select">
-                    <option value="claro">Claro</option>
-                    <option value="oscuro">Oscuro</option>
-                </select>
-            </li>
-            <li><a href="#">Cerrar sesión</a></li>
-        </nav>
     </header>
     <nav class="nav-desplegable" id="nav-desplegable">
         <ul class="nav-lista">
-            <li><a href="/peoplepro/public/home/index">Inicio</a></li>
-            <li><a href="/peoplepro/public/usuario/index">Usuarios</a></li>
-            <li><a href="/peoplepro/public/permiso/index">Permisos</a></li>
-            <li><a href="/peoplepro/public/beneficio/index">Beneficios</a></li>
-            <li><a href="/peoplepro/public/visitante/index">Visitantes Externos</a></li>
-            <li><a href="/peoplepro/public/documento/index">Documentos</a></li>
-            <li><a href="/peoplepro/public/capacitacion/index">Capacitaciones</a></li>
-            <li><a href="/peoplepro/public/evaluacion/index">Evaluaciones</a></li>
-            <li><a href="/peoplepro/public/area/index">Áreas</a></li>
+            <li><a href="/peoplepro/public/index.php?action=dashboard">Inicio</a></li>
+            <li><a href="/peoplepro/public/index.php?action=usuario">Usuarios</a></li>
+            <li><a href="/peoplepro/public/index.php?action=permiso">Permisos</a></li>
+            <li><a href="/peoplepro/public/index.php?action=beneficio">Beneficios</a></li>
+            <li><a href="/peoplepro/public/index.php?action=visitante">Visitantes Externos</a></li>
+            <li><a href="/peoplepro/public/index.php?action=documento">Documentos</a></li>
+            <li><a href="/peoplepro/public/index.php?action=capacitacion">Capacitaciones</a></li>
+            <li><a href="/peoplepro/public/index.php?action=area">Áreas</a></li>
         </ul>
     </nav><br>
-    <h2 class="titulo-usuario">Crear nuevo usuario</h2>
-    <form method="POST" action="/peoplepro/public/index.php?url=usuario/crear" class="formulario-usuario">
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <select name="rol" required>
+    
+        <h2 class="titulo-usuario">Crear nuevo usuario</h2>
+
+    <form method="POST" action="/peoplepro/public/usuario/crear" class="formulario-usuario">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
+
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" placeholder="Contraseña segura" required minlength="6">
+
+        <label for="rol">Rol:</label>
+        <select id="rol" name="rol" required>
+            <option value="">Selecciona un rol</option>
             <option value="usuario">Usuario</option>
             <option value="admin">Admin</option>
         </select>
 
-        <select name="area_id" required>
+        <label for="area_id">Área:</label>
+        <select id="area_id" name="area_id" required>
             <option value="">Selecciona un área</option>
             <?php foreach ($data['areas'] as $area): ?>
-                <option value="<?= $area['id'] ?>"><?= htmlspecialchars($area['nombre']) ?></option>
+                <option value="<?= htmlspecialchars($area['id']) ?>">
+                    <?= htmlspecialchars($area['nombre']) ?>
+                </option>
             <?php endforeach; ?>
         </select>
 
         <button type="submit">Crear usuario</button>
     </form>
-    <br>
+
+
+<br>
+
     <main class="main-usuario">
         <table id="myTable" class="table table-striped nowrap responsive">
             <thead>
@@ -93,14 +99,14 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($data['usuarios'])): ?>
-                    <?php foreach($data['usuarios'] as $usuario): ?>
+                <?php if (!empty($data['usuarios'])): ?>
+                    <?php foreach ($data['usuarios'] as $usuario): ?>
                         <tr>
                             <td><?= htmlspecialchars($usuario['id']) ?></td>
                             <td><?= htmlspecialchars($usuario['nombre']) ?></td>
                             <td><?= htmlspecialchars($usuario['email']) ?></td>
                             <td><?= htmlspecialchars($usuario['rol']) ?></td>
-                            <td><?= htmlspecialchars($usuario['area_id'] ?? 'Sin área') ?></td>
+                            <td><?= htmlspecialchars($usuario['area_nombre'] ?? 'Sin área') ?></td>
                             <td>
                                 <a title="Asignar Área" href="/peoplepro/public/usuario/asignar_area/<?= $usuario['id'] ?>"><i class="bi bi-clipboard-check"></i></a>
                                 <a title="Editar" href="/peoplepro/public/usuario/editar/<?= $usuario['id'] ?>"><i class="bi bi-pencil-fill"></i></a>
@@ -114,6 +120,7 @@
             </tbody>
         </table>
     </main>
+
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
     <!-- DataTables y Extensiones -->

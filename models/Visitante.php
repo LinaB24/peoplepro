@@ -1,12 +1,14 @@
 <?php
+require_once __DIR__ . '/../config/database.php';
+
 class Visitante
 {
     private $conn;
 
     public function __construct()
     {
-        require_once 'Database.php';
-        $this->conn = Database::getConnection();
+        $db = new Database();
+        $this->conn = $db->connect();
     }
 
     public function obtenerTodos()

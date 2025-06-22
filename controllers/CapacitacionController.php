@@ -1,7 +1,8 @@
 <?php
-require_once '../models/Capacitacion.php';
+require_once __DIR__ . '/../models/Capacitacion.php';
+require_once __DIR__ . '/../core/Controller.php';
 
-class CapacitacionController {
+class CapacitacionController extends Controller {
     private $model;
 
     public function __construct() {
@@ -21,8 +22,7 @@ class CapacitacionController {
                 'fecha' => $_POST['fecha']
             ];
             if ($this->model->crear($data)) {
-                header('Location: /peoplepro/public/capacitacion');
-                exit;
+                $this->redirect('/peoplepro/public/index.php?action=capacitacion');
             } else {
                 echo "Error al crear la capacitación.";
             }
@@ -33,8 +33,7 @@ class CapacitacionController {
 
     public function editar($id = null) {
         if ($id === null) {
-            header('Location: /peoplepro/public/capacitacion');
-            exit;
+            $this->redirect('/peoplepro/public/index.php?action=capacitacion');
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -44,16 +43,14 @@ class CapacitacionController {
                 'fecha' => $_POST['fecha']
             ];
             if ($this->model->actualizar($id, $data)) {
-                header('Location: /peoplepro/public/capacitacion');
-                exit;
+                $this->redirect('/peoplepro/public/index.php?action=capacitacion');
             } else {
                 echo "Error al actualizar la capacitación.";
             }
         } else {
             $capacitacion = $this->model->obtenerPorId($id);
             if (!$capacitacion) {
-                header('Location: /peoplepro/public/capacitacion');
-                exit;
+                $this->redirect('/peoplepro/public/index.php?action=capacitacion');
             }
             $this->view('capacitaciones/editar', ['capacitacion' => $capacitacion]);
         }
@@ -61,14 +58,9 @@ class CapacitacionController {
 
     public function eliminar($id) {
         if ($this->model->eliminar($id)) {
-            header('Location: /peoplepro/public/capacitacion');
-            exit;
+            $this->redirect('/peoplepro/public/index.php?action=capacitacion');
         } else {
             echo "Error al eliminar la capacitación.";
         }
-    }
-
-    private function view($vista, $data = []) {
-        require_once "../views/$vista.php";
     }
 }

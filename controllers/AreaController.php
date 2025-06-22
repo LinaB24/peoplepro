@@ -1,4 +1,7 @@
 <?php
+require_once __DIR__ . '/../core/Controller.php';
+require_once __DIR__ . '/../models/Area.php';
+
 class AreaController extends Controller {
     private $area;
 
@@ -17,36 +20,31 @@ class AreaController extends Controller {
 
     public function guardar() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $_POST['color_fondo'] = $this->validarColor($_POST['color_fondo'] ?? '#F7F7F8');
             $this->area->guardar($_POST);
-            header('Location: /peoplepro/public/area');
-            exit;
+            $this->redirect('/peoplepro/public/index.php?action=area');
         }
     }
 
     public function editar($id) {
-        $data['area'] = $this->area->obtenerPorId($id);
-        $this->view('areas/editar', $data);
+        $area = $this->area->obtenerPorId($id);
+        if (!$area) {
+            echo "Área no encontrada";
+            return;
+        }
+        $this->view('areas/editar', ['area' => $area]);
     }
 
     public function actualizar() {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $_POST['color_fondo'] = $this->validarColor($_POST['color_fondo'] ?? '#F7F7F8');
-        $this->area->actualizar($_POST);
-        $this->view('areas/cerrarIframe'); // <- aquí carga el cierre
-        exit;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->area->actualizar($_POST);
+            $this->redirect('/peoplepro/public/index.php?action=area');
+        }
     }
-}
-
 
     public function eliminar($id) {
         $this->area->eliminar($id);
-        header('Location: /peoplepro/public/area');
-        exit;
-    }
-
-    private function validarColor($color) {
-        return preg_match('/^#[a-fA-F0-9]{6}$/', $color) ? $color : '#F7F7F8';
+        $this->redirect('/peoplepro/public/index.php?action=area');
     }
 }
+
 
