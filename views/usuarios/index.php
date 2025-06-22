@@ -34,7 +34,6 @@
         <input type="text" placeholder="Buscar" class="input-icono">
         </form>
         <div class="derecha">
-            <p><?= htmlspecialchars($_SESSION['usuario_nombre'] ?? 'Invitado') ?></p>
             <a href="index.php?action=logout">Cerrar sesión</a>
         </div>
     </header>
@@ -53,7 +52,7 @@
     
         <h2 class="titulo-usuario">Crear nuevo usuario</h2>
 
-    <form method="POST" action="/peoplepro/public/usuario/crear" class="formulario-usuario">
+    <form method="POST" action="/peoplepro/public/index.php?action=usuario&method=crear" class="formulario-usuario">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
 
@@ -73,7 +72,7 @@
         <label for="area_id">Área:</label>
         <select id="area_id" name="area_id" required>
             <option value="">Selecciona un área</option>
-            <?php foreach ($data['areas'] as $area): ?>
+            <?php foreach ($areas as $area): ?>
                 <option value="<?= htmlspecialchars($area['id']) ?>">
                     <?= htmlspecialchars($area['nombre']) ?>
                 </option>
@@ -82,6 +81,7 @@
 
         <button type="submit">Crear usuario</button>
     </form>
+
 
 
 <br>
@@ -108,9 +108,12 @@
                             <td><?= htmlspecialchars($usuario['rol']) ?></td>
                             <td><?= htmlspecialchars($usuario['area_nombre'] ?? 'Sin área') ?></td>
                             <td>
-                                <a title="Asignar Área" href="/peoplepro/public/usuario/asignar_area/<?= $usuario['id'] ?>"><i class="bi bi-clipboard-check"></i></a>
-                                <a title="Editar" href="/peoplepro/public/usuario/editar/<?= $usuario['id'] ?>"><i class="bi bi-pencil-fill"></i></a>
-                                <a title="Eliminar" href="/peoplepro/public/usuario/eliminar/<?= $usuario['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar este usuario?')"><i class="bi bi-trash3-fill"></i></a>
+                                <a title="Editar" href="/peoplepro/public/index.php?action=usuario&method=editar&id=<?= $usuario['id'] ?>">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </a>
+                                <a title="Eliminar" href="/peoplepro/public/index.php?action=usuario&method=eliminar&id=<?= $usuario['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -120,6 +123,7 @@
             </tbody>
         </table>
     </main>
+
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 

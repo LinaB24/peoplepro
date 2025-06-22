@@ -1,5 +1,5 @@
 <h2>Editar Beneficio</h2>
-<form action="/peoplepro/public/beneficio/actualizar" method="POST">
+<form action="/peoplepro/public/index.php?action=beneficio&method=actualizar" method="POST">
     <input type="hidden" name="id" value="<?= $data['beneficio']['id'] ?>">
 
     <label>Nombre:</label><br>
@@ -15,4 +15,6 @@
     <input type="date" name="fecha_fin" value="<?= $data['beneficio']['fecha_fin'] ?>"><br><br>
 
     <input type="submit" value="Actualizar">
+    <a href="/peoplepro/public/index.php?action=beneficio" class="btn-cancelar">Cancelar</a>
+
 </form>

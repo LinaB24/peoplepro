@@ -1,6 +1,7 @@
 <h2>Crear Nueva Capacitación</h2>
 
-<form method="POST" action="/peoplepro/public/capacitacion/crear">
+<form method="POST" action="/peoplepro/public/index.php?action=capacitacion&method=crear">
+
     <label for="nombre">Nombre:</label><br>
     <input type="text" name="nombre" id="nombre" required><br><br>
 
@@ -11,5 +12,6 @@
     <input type="date" name="fecha" id="fecha" required><br><br>
 
     <button type="submit">Guardar</button>
-    <a href="/peoplepro/public/capacitacion">Cancelar</a>
+    <a href="/peoplepro/public/index.php?action=capacitacion">Cancelar</a>
+
 </form>

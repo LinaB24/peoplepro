@@ -16,4 +16,5 @@ class Controller {
         header("Location: $url");
         exit;
     }
+    
 }

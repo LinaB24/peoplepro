@@ -19,7 +19,7 @@ class LoginController extends Controller {
             if (isset($resultado['usuario'])) {
                 if (session_status() === PHP_SESSION_NONE) session_start();
                 $_SESSION['usuario_id'] = $resultado['usuario']['id'];
-                $_SESSION['usuario'] = $resultado['usuario']['nombre'];
+                $_SESSION['usuario_nombre'] = $resultado['usuario']['nombre'];
                 $this->redirect('/peoplepro/public/index.php?action=dashboard');
             } else {
                 $error = $resultado['error'];

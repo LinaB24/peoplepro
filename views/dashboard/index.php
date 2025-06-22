@@ -32,7 +32,7 @@
             <li><a href="/peoplepro/public/index.php?action=visitante">Visitantes Externos</a></li>
             <li><a href="/peoplepro/public/index.php?action=documento">Documentos</a></li>
             <li><a href="/peoplepro/public/index.php?action=capacitacion">Capacitaciones</a></li>
-            <li><a href="/peoplepro/public/index.php?action=evaluacion">Evaluaciones</a></li>
+            <li><a href="/peoplepro/public/index.php?action=horario">Horarios</a></li>
             <li><a href="/peoplepro/public/index.php?action=area">Áreas</a></li>
         </ul>
     </nav>

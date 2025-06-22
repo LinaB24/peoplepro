@@ -36,7 +36,7 @@
         </ul>
     </nav><br>
     <h2>Lista de Visitantes Externos</h2>
-        <a href="/peoplepro/public/visitante/crear">Registrar nuevo visitante</a>
+        <a href="/peoplepro/public/index.php?action=visitante&method=crear">➕ Registrar nuevo visitante</a>
         <table border="1" cellpadding="5" cellspacing="0">
             <thead>
                 <tr>
@@ -60,8 +60,8 @@
                         <td><?= htmlspecialchars($v['fecha_ingreso']) ?></td>
                         <td><?= htmlspecialchars($v['motivo']) ?></td>
                         <td>
-                            <a href="/peoplepro/public/visitante/editar/<?= $v['id'] ?>">Editar</a> |
-                            <a href="/peoplepro/public/visitante/eliminar/<?= $v['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar?')">Eliminar</a>
+                            <a href="/peoplepro/public/index.php?action=visitante&method=editar&id=<?= $v['id'] ?>">✏️ Editar</a> |
+                            <a href="/peoplepro/public/index.php?action=visitante&method=eliminar&id=<?= $v['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar?')">🗑️ Eliminar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

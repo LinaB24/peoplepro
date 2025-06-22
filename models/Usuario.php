@@ -21,10 +21,16 @@ class Usuario {
     }
 
     public function crear($nombre, $email, $password, $rol, $area_id) {
-        $stmt = $this->conn->prepare(
-            "INSERT INTO users (nombre, email, password, rol, area_id) VALUES (?, ?, ?, ?, ?)"
-        );
-        return $stmt->execute([$nombre, $email, $password, $rol, $area_id]);
+        try {
+            $stmt = $this->conn->prepare("
+                INSERT INTO users (nombre, email, password, rol, area_id) 
+                VALUES (?, ?, ?, ?, ?)
+            ");
+            return $stmt->execute([$nombre, $email, $password, $rol, $area_id]);
+        } catch (PDOException $e) {
+            error_log('Error en crear usuario: ' . $e->getMessage());
+            return false;
+        }
     }
 
     public function obtenerTodosConArea() {

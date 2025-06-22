@@ -1,6 +1,7 @@
 <h2>Registrar Visitante</h2>
 
-<form action="/peoplepro/public/visitante/guardar" method="POST">
+<form action="/peoplepro/public/index.php?action=visitante&method=guardar" method="POST">
+
     <label>Nombre:</label><br>
     <input type="text" name="nombre" required><br><br>
 
@@ -17,4 +18,6 @@
     <textarea name="motivo" rows="3" cols="40"></textarea><br><br>
 
     <button type="submit">Guardar</button>
+    <a href="/peoplepro/public/index.php?action=visitante" class="btn-cancelar">Cancelar</a>
+
 </form>

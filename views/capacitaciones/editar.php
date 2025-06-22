@@ -1,6 +1,6 @@
 <h2>Editar Capacitación</h2>
 
-<form method="POST" action="/peoplepro/public/capacitacion/editar/<?php echo $data['capacitacion']['id']; ?>">
+<form method="POST" action="/peoplepro/public/index.php?action=capacitacion&method=editar&id=<?= $data['capacitacion']['id'] ?>">
     <label for="nombre">Nombre:</label><br>
     <input type="text" name="nombre" id="nombre" value="<?php echo htmlspecialchars($data['capacitacion']['nombre']); ?>" required><br><br>
 
@@ -11,5 +11,6 @@
     <input type="date" name="fecha" id="fecha" value="<?php echo htmlspecialchars($data['capacitacion']['fecha']); ?>" required><br><br>
 
     <button type="submit">Actualizar</button>
-    <a href="/peoplepro/public/capacitacion">Cancelar</a>
+    <a href="/peoplepro/public/index.php?action=capacitacion">Cancelar</a>
+
 </form>

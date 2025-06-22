@@ -6,7 +6,7 @@ class DashboardController extends Controller {
         if (session_status() === PHP_SESSION_NONE) session_start();
         
         if (!isset($_SESSION['usuario_id'])) {
-            $this->redirect('/peoplepro/public/index.php?action=login');
+            $this->redirect('index.php?action=login');
         }
 
         $nombre = $_SESSION['usuario'] ?? 'Invitado';

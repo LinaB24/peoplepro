@@ -1,44 +1,60 @@
 <?php
-require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../core/Model.php';
 
-class Visitante
+class Visitante extends Model
 {
-    private $conn;
-
-    public function __construct()
-    {
-        $db = new Database();
-        $this->conn = $db->connect();
-    }
-
     public function obtenerTodos()
     {
-        $stmt = $this->conn->query("SELECT * FROM visitantes");
+        $sql = "SELECT * FROM visitantes ORDER BY fecha_ingreso DESC";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function insertar($nombre, $documento, $empresa, $fecha_ingreso, $motivo)
     {
-        $stmt = $this->conn->prepare("INSERT INTO visitantes (nombre, documento, empresa, fecha_ingreso, motivo) VALUES (?, ?, ?, ?, ?)");
-        return $stmt->execute([$nombre, $documento, $empresa, $fecha_ingreso, $motivo]);
+        $sql = "INSERT INTO visitantes (nombre, documento, empresa, fecha_ingreso, motivo) 
+                VALUES (:nombre, :documento, :empresa, :fecha_ingreso, :motivo)";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([
+            'nombre'        => $nombre,
+            'documento'     => $documento,
+            'empresa'       => $empresa,
+            'fecha_ingreso' => $fecha_ingreso,
+            'motivo'        => $motivo
+        ]);
     }
 
     public function obtenerPorId($id)
     {
-        $stmt = $this->conn->prepare("SELECT * FROM visitantes WHERE id = ?");
-        $stmt->execute([$id]);
+        $sql = "SELECT * FROM visitantes WHERE id = :id LIMIT 1";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function actualizar($id, $nombre, $documento, $empresa, $fecha_ingreso, $motivo)
     {
-        $stmt = $this->conn->prepare("UPDATE visitantes SET nombre=?, documento=?, empresa=?, fecha_ingreso=?, motivo=? WHERE id=?");
-        return $stmt->execute([$nombre, $documento, $empresa, $fecha_ingreso, $motivo, $id]);
+        $sql = "UPDATE visitantes 
+                SET nombre = :nombre, documento = :documento, empresa = :empresa, 
+                    fecha_ingreso = :fecha_ingreso, motivo = :motivo 
+                WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([
+            'nombre'        => $nombre,
+            'documento'     => $documento,
+            'empresa'       => $empresa,
+            'fecha_ingreso' => $fecha_ingreso,
+            'motivo'        => $motivo,
+            'id'            => $id
+        ]);
     }
 
     public function eliminar($id)
     {
-        $stmt = $this->conn->prepare("DELETE FROM visitantes WHERE id = ?");
-        return $stmt->execute([$id]);
+        $sql = "DELETE FROM visitantes WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute(['id' => $id]);
     }
 }
+

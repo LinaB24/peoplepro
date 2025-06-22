@@ -1,6 +1,7 @@
 <h2>Editar Visitante</h2>
 
-<form action="/peoplepro/public/visitante/actualizar" method="POST">
+<form action="/peoplepro/public/index.php?action=visitante&method=actualizar" method="POST">
+
     <input type="hidden" name="id" value="<?= $data['visitante']['id'] ?>">
 
     <label>Nombre:</label><br>
@@ -19,4 +20,6 @@
     <textarea name="motivo" rows="3" cols="40"><?= $data['visitante']['motivo'] ?></textarea><br><br>
 
     <button type="submit">Actualizar</button>
+    <a href="/peoplepro/public/index.php?action=visitante" class="btn-cancelar">Cancelar</a>
+
 </form>

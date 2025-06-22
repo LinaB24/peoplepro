@@ -36,7 +36,7 @@
         </ul>
     </nav><br>
     <h2>Gestión de Beneficios</h2>
-    <a href="/peoplepro/public/beneficio/crear">➕ Registrar nuevo beneficio</a>
+    <a href="/peoplepro/public/index.php?action=beneficio&method=crear">➕ Registrar nuevo beneficio</a>
 
     <table border="1" cellpadding="5" cellspacing="0">
         <thead>
@@ -58,8 +58,8 @@
                     <td><?= htmlspecialchars($b['fecha_inicio']) ?></td>
                     <td><?= htmlspecialchars($b['fecha_fin']) ?></td>
                     <td>
-                        <a href="/peoplepro/public/beneficio/editar/<?= $b['id'] ?>">✏️ Editar</a> |
-                        <a href="/peoplepro/public/beneficio/eliminar/<?= $b['id'] ?>" onclick="return confirm('¿Eliminar este beneficio?')">🗑️ Eliminar</a>
+                        <a href="/peoplepro/public/index.php?action=beneficio&method=editar&id=<?= $b['id'] ?>">✏️ Editar</a> |
+                        <a href="/peoplepro/public/index.php?action=beneficio&method=eliminar&id=<?= $b['id'] ?>" onclick="return confirm('¿Eliminar este beneficio?')">🗑️ Eliminar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

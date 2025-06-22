@@ -1,5 +1,6 @@
 <?php
-    require_once __DIR__ . '/../core/Controller.php';
+require_once __DIR__ . '/../core/Controller.php';
+
 class BeneficioController extends Controller {
     private $beneficio;
 
@@ -19,7 +20,8 @@ class BeneficioController extends Controller {
     public function guardar() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->beneficio->guardar($_POST);
-            header('Location: /peoplepro/public/beneficio');
+            // Redirección corregida:
+            header('Location: /peoplepro/public/index.php?action=beneficio');
             exit;
         }
     }
@@ -29,9 +31,19 @@ class BeneficioController extends Controller {
         $this->view('beneficios/editar', $data);
     }
 
+    public function actualizar() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->beneficio->actualizar($_POST);
+            // Redirección corregida:
+            header('Location: /peoplepro/public/index.php?action=beneficio');
+            exit;
+        }
+    }
+
     public function eliminar($id) {
         $this->beneficio->eliminar($id);
-        header('Location: /peoplepro/public/beneficio');
+        // Redirección corregida:
+        header('Location: /peoplepro/public/index.php?action=beneficio');
         exit;
     }
 }
