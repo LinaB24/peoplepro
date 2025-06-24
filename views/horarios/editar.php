@@ -17,9 +17,10 @@
       </button>
       <div id="logo"></div>
     </div>
-    <form action="#" class="buscador">
-      <input type="text" placeholder="Buscar" class="input-icono">
-    </form>
+      <form action="#" class="buscador">  
+        <input type="text" placeholder="Buscar..." class="input-buscador">
+        <button type="submit" class="buscador-icono"><i class="bi bi-search"></i></button>
+      </form>
     <div class="derecha">
       <p><?= htmlspecialchars($_SESSION["usuario"] ?? 'Usuario') ?></p>
     </div>
