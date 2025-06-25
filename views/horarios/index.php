@@ -41,8 +41,8 @@
                 <td><?= $horario['estado'] ?></td>
                 <td><?= htmlspecialchars($horario['observaciones']) ?></td>
                 <td>
-                  <a href="/peoplepro/public/index.php?action=horario&method=editar&id=<?= $horario['id'] ?>"><i class="bi bi-pencil-fill"></i> Editar</a>
-                  <a href="/peoplepro/public/index.php?action=horario&method=eliminar&id=<?= $horario['id'] ?>" onclick="return confirm('¿Seguro de eliminar este horario?')"><i class="bi bi-trash3-fill"></i> Eliminar</a>
+                  <a class="bt-editar" href="/peoplepro/public/index.php?action=horario&method=editar&id=<?= $horario['id'] ?>"><i class="bi bi-pencil-fill"></i> Editar</a>
+                  <a class="bt-eliminar" href="/peoplepro/public/index.php?action=horario&method=eliminar&id=<?= $horario['id'] ?>" onclick="return confirm('¿Seguro de eliminar este horario?')"><i class="bi bi-trash3-fill"></i> Eliminar</a>
                 </td>
               </tr>
             <?php endforeach; ?>

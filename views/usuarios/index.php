@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
     <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
     <link rel="stylesheet" href="/peoplepro/public/css/usuario.css">
+    <link rel="stylesheet" href="/peoplepro/public/css/tablas.css">
     
 
 </head>
@@ -76,11 +77,11 @@
                             <td><?= htmlspecialchars($usuario['rol']) ?></td>
                             <td><?= htmlspecialchars($usuario['area_nombre'] ?? 'Sin área') ?></td>
                             <td>
-                                <a title="Editar" href="/peoplepro/public/index.php?action=usuario&method=editar&id=<?= $usuario['id'] ?>">
-                                    <i class="bi bi-pencil-fill"></i>
+                                <a class="bt-editar" title="Editar" href="/peoplepro/public/index.php?action=usuario&method=editar&id=<?= $usuario['id'] ?>">
+                                    <i class="bi bi-pencil-fill"></i> Editar
                                 </a>
-                                <a title="Eliminar" href="/peoplepro/public/index.php?action=usuario&method=eliminar&id=<?= $usuario['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">
-                                    <i class="bi bi-trash3-fill"></i>
+                                <a class="bt-eliminar" title="Eliminar" href="/peoplepro/public/index.php?action=usuario&method=eliminar&id=<?= $usuario['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">
+                                    <i class="bi bi-trash3-fill"></i> Eliminar
                                 </a>
                             </td>
                         </tr>

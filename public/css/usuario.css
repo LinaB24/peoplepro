@@ -69,7 +69,7 @@
   font-size: 14px;
 }
 #myTable thead th {
-  background-color:rgb(78, 78, 78);
+  background-color:var(--primario);
   color: white;
   font-weight: bold;
   text-align: center;
@@ -83,12 +83,6 @@
 .bi-clipboard-check, .bi-pencil-fill, .bi-trash3-fill {
     font-size: 1.3rem;
     margin-right: 5px;
-}
-.bi-trash3-fill{
-    color: rgb(189, 108, 108);
-}
-.bi-pencil-fill{
-    color: rgb(106, 190, 216);
 }
 #myTable tbody td a{
     text-decoration: none;

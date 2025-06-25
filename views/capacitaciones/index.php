@@ -29,8 +29,8 @@
                     <td><?= htmlspecialchars($cap['descripcion']) ?></td>
                     <td><?= htmlspecialchars($cap['fecha']) ?></td>
                     <td>
-                        <a href="/peoplepro/public/index.php?action=capacitacion&method=editar&id=<?= $cap['id'] ?>">✏️ Editar</a>
-                        <a href="/peoplepro/public/index.php?action=capacitacion&method=eliminar&id=<?= $cap['id'] ?>" onclick="return confirm('¿Seguro que quieres eliminar esta capacitación?');">❌ Eliminar</a>
+                        <a class="bt-editar" href="/peoplepro/public/index.php?action=capacitacion&method=editar&id=<?= $cap['id'] ?>"><i class="bi bi-pencil-fill"></i> Editar</a>
+                        <a class="bt-eliminar" href="/peoplepro/public/index.php?action=capacitacion&method=eliminar&id=<?= $cap['id'] ?>" onclick="return confirm('¿Seguro que quieres eliminar esta capacitación?');"><i class="bi bi-trash3-fill"></i> Eliminar</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
