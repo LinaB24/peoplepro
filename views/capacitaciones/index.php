@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Capacitaciones</title>
+  <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
   <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
+  <link rel="stylesheet" href="/peoplepro/public/css/tablas.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
     <?php include __DIR__ . '/../menu/menu.php'; ?><br>
-    <h2>Capacitaciones</h2>
-        <a href="/peoplepro/public/index.php?action=capacitacion&method=crear">+ Nueva Capacitación</a>
-        <table border="1" cellpadding="5" cellspacing="0">
+    <h2 class="titulo-principal">Capacitaciones</h2>
+    <main class="main-tabla"> 
+        <a class="btn-tabla" href="/peoplepro/public/index.php?action=capacitacion&method=crear"><i class="bi bi-mortarboard-fill"></i> Nueva Capacitación</a>
+        <table class="tablas">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -25,13 +29,14 @@
                     <td><?= htmlspecialchars($cap['descripcion']) ?></td>
                     <td><?= htmlspecialchars($cap['fecha']) ?></td>
                     <td>
-                        <a href="/peoplepro/public/index.php?action=capacitacion&method=editar&id=<?= $cap['id'] ?>">✏️ Editar</a> |
+                        <a href="/peoplepro/public/index.php?action=capacitacion&method=editar&id=<?= $cap['id'] ?>">✏️ Editar</a>
                         <a href="/peoplepro/public/index.php?action=capacitacion&method=eliminar&id=<?= $cap['id'] ?>" onclick="return confirm('¿Seguro que quieres eliminar esta capacitación?');">❌ Eliminar</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
+    </main>
     <script src="/peoplepro/public/js/nav.js"></script>
 </body>
 </html>

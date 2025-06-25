@@ -1,25 +1,11 @@
-:root {
-    --primario: #6C5CE7;
-    --fondo-claro:#F7F7F8;
-    --texto-primario: #2D3436;
-    --texto-secundario: #636E72;
-    --box-shadow: #bdc2c4 0px 0px 2.5px;
-}
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
 }
-.titulo-usuario{
-    text-align: center;
-    font-weight: 600;
-    font-size: 3rem;
-    color: var(--texto-primario);
-    margin-bottom: 20px;
-}
 .formulario-usuario{
-    width: 90%;
+    width: 95%;
     height: auto;
     padding:20px;
     box-shadow: var(--box-shadow);
@@ -30,15 +16,16 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
-    background-color: white;
+    background-color: var(--fondo-header);
     overflow: hidden;
 }
 .formulario-usuario input{
     border: none;
     border-radius: 8px;
-    background-color: var(--fondo-claro);
+    background-color: var(--fondo);
     padding: 10px;
     width: 200px;
+    color: var(--texto-primario);
 }
 .formulario-usuario input:focus, .formulario-usuario select:focus{
     outline: lightblue solid 2px;
@@ -57,22 +44,22 @@
     transition: all 0.8s;
 }
 .formulario-usuario select{
-    background-color: var(--fondo-claro);
+    background-color: var(--fondo);
     border: none;
     border-radius: 8px;
     padding: 10px;
-    color:#636E72;
+    color:var(--texto-primario);
 }
 .formulario-usuario select option[selected]{
     background-color: var(--fondo-claro);
 }
 .main-usuario{
-    width: 90%;
+    width: 95%;
     padding: 30px;
     box-shadow: var(--box-shadow);
     margin: 0 auto;
     border-radius: 10px;
-    background-color: white;
+    background-color: var(--fondo-header);
     overflow: hidden;
 }
 #myTable {
@@ -80,7 +67,6 @@
   overflow: hidden;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  background-color: white;
 }
 #myTable thead th {
   background-color:rgb(78, 78, 78);
@@ -104,6 +90,6 @@
 .bi-pencil-fill{
     color: rgb(106, 190, 216);
 }
-.bi-clipboard-check{
-   color: rgb(137, 216, 106);
+#myTable tbody td a{
+    text-decoration: none;
 }
