@@ -14,63 +14,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
     <link rel="stylesheet" href="/peoplepro/public/css/nav.css">
     <link rel="stylesheet" href="/peoplepro/public/css/usuario.css">
-    <link rel="stylesheet" href="/peoplepro/public/css/fondo.css">
     
 
 </head>
 <body>
-<header class="header">
-        <div class="izquierda">
-            <button class="menu-hamburguesa">
-                <span class="linea"></span>
-                <span class="linea"></span>
-                <span class="linea"></span>
-            </button>
-            <div id="logo"></div> 
-        </div>
-        <form action="#" class="buscador">  
-        <input type="text" placeholder="Buscar..." class="input-buscador">
-        <button type="submit" class="buscador-icono"><i class="bi bi-search"></i></button>
-        </form>
-        <div class="derecha">
-            <a href="index.php?action=logout">Cerrar sesión</a>
-        </div>
-    </header>
-    <nav class="nav-desplegable" id="nav-desplegable">
-        <ul class="nav-lista">
-            <li><a href="/peoplepro/public/index.php?action=dashboard">Inicio</a></li>
-            <li><a href="/peoplepro/public/index.php?action=usuario">Usuarios</a></li>
-            <li><a href="/peoplepro/public/index.php?action=permiso">Permisos</a></li>
-            <li><a href="/peoplepro/public/index.php?action=beneficio">Beneficios</a></li>
-            <li><a href="/peoplepro/public/index.php?action=visitante">Visitantes Externos</a></li>
-            <li><a href="/peoplepro/public/index.php?action=documento">Documentos</a></li>
-            <li><a href="/peoplepro/public/index.php?action=capacitacion">Capacitaciones</a></li>
-            <li><a href="/peoplepro/public/index.php?action=area">Áreas</a></li>
-        </ul>
-    </nav><br>
+    <?php include __DIR__ . '/../menu/menu.php'; ?><br>
     
-        <h2 class="titulo-usuario">Crear nuevo usuario</h2>
+        <h2 class="titulo-principal">Crear nuevo usuario</h2>
 
     <form method="POST" action="/peoplepro/public/index.php?action=usuario&method=crear" class="formulario-usuario">
-        <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required>
 
-        <label for="email">Correo electrónico:</label>
         <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
 
-        <label for="password">Contraseña:</label>
         <input type="password" id="password" name="password" placeholder="Contraseña segura" required minlength="6">
 
-        <label for="rol">Rol:</label>
         <select id="rol" name="rol" required>
             <option value="">Selecciona un rol</option>
             <option value="usuario">Usuario</option>
             <option value="admin">Admin</option>
         </select>
 
-        <label for="area_id">Área:</label>
         <select id="area_id" name="area_id" required>
             <option value="">Selecciona un área</option>
             <?php foreach ($areas as $area): ?>
@@ -80,7 +47,7 @@
             <?php endforeach; ?>
         </select>
 
-        <button type="submit">Crear usuario</button>
+        <button type="submit">Crear usuario <i class="bi bi-person-plus-fill"></i></button>
     </form>
 
 
