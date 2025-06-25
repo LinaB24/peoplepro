@@ -30,8 +30,8 @@
                     <td><?= htmlspecialchars($area['nombre']) ?></td>
                     <td><?= htmlspecialchars($area['descripcion']) ?></td>
                     <td>
-                        <a href="/peoplepro/public/index.php?action=area&method=editar&id=<?= urlencode($area['id']) ?>">✏️ Editar</a> |
-                        <a href="/peoplepro/public/index.php?action=area&method=eliminar&id=<?= urlencode($area['id']) ?>" onclick="return confirm('¿Eliminar esta área?')">❌ Eliminar</a>
+                        <a class="bt-editar" href="/peoplepro/public/index.php?action=area&method=editar&id=<?= urlencode($area['id']) ?>"><i class="bi bi-pencil-fill"></i> Editar</a>
+                        <a class="bt-eliminar" href="/peoplepro/public/index.php?action=area&method=eliminar&id=<?= urlencode($area['id']) ?>" onclick="return confirm('¿Eliminar esta área?')"><i class="bi bi-trash3-fill"></i> Eliminar</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

@@ -28,16 +28,28 @@
 
 .tablas tbody td {
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     background-color:white;
     border-bottom: 2px solid var(--primario);
 }
-.tablas tbody td a {
+.bt-eliminar, .bt-editar{
     text-decoration: none;
-    color: var(--texto-primario);
+    color: white;
     padding: 10px;
-    background-color: blueviolet;
     border-radius: 8px;
+}
+.bt-editar{
+    background-color: lightgreen;
+    margin: 5px;
+}
+.bt-eliminar{
+    background-color: lightcoral;
+}
+.bt-editar:hover{
+    background-color: rgb(93, 175, 93);
+}
+.bt-eliminar:hover{
+    background-color: rgb(168, 77, 77);
 }
 .btn-tabla {
     display: inline-block;

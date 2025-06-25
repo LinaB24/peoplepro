@@ -27,8 +27,8 @@
                     <td><?= htmlspecialchars($permiso['id']) ?></td>
                     <td><?= htmlspecialchars($permiso['tipo']) ?></td>
                     <td>
-                        <a href="/peoplepro/public/index.php?action=permiso&method=editar&id=<?= $permiso['id'] ?>">✏️ Editar</a>
-                        <a href="/peoplepro/public/index.php?action=permiso&method=eliminar&id=<?= $permiso['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar este permiso?')">🗑️ Eliminar</a>
+                        <a class="bt-editar" href="/peoplepro/public/index.php?action=permiso&method=editar&id=<?= $permiso['id'] ?>"><i class="bi bi-pencil-fill"></i> Editar</a>
+                        <a class="bt-eliminar" href="/peoplepro/public/index.php?action=permiso&method=eliminar&id=<?= $permiso['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar este permiso?')"><i class="bi bi-trash3-fill"></i> Eliminar</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

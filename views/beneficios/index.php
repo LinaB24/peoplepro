@@ -33,8 +33,8 @@
                         <td><?= htmlspecialchars($b['fecha_inicio']) ?></td>
                         <td><?= htmlspecialchars($b['fecha_fin']) ?></td>
                         <td>
-                            <a href="/peoplepro/public/index.php?action=beneficio&method=editar&id=<?= $b['id'] ?>">✏️ Editar</a> |
-                            <a href="/peoplepro/public/index.php?action=beneficio&method=eliminar&id=<?= $b['id'] ?>" onclick="return confirm('¿Eliminar este beneficio?')">🗑️ Eliminar</a>
+                            <a class="bt-editar" href="/peoplepro/public/index.php?action=beneficio&method=editar&id=<?= $b['id'] ?>"><i class="bi bi-pencil-fill"></i> Editar</a>
+                            <a class="bt-eliminar" href="/peoplepro/public/index.php?action=beneficio&method=eliminar&id=<?= $b['id'] ?>" onclick="return confirm('¿Eliminar este beneficio?')"><i class="bi bi-trash3-fill"></i> Eliminar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

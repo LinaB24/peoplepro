@@ -36,8 +36,8 @@
                                 <td><?= htmlspecialchars($v['fecha_ingreso']) ?></td>
                                 <td><?= htmlspecialchars($v['motivo']) ?></td>
                                 <td>
-                                    <a href="/peoplepro/public/index.php?action=visitante&method=editar&id=<?= $v['id'] ?>">✏️ Editar</a> |
-                                    <a href="/peoplepro/public/index.php?action=visitante&method=eliminar&id=<?= $v['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar?')">🗑️ Eliminar</a>
+                                    <a class="bt-editar" href="/peoplepro/public/index.php?action=visitante&method=editar&id=<?= $v['id'] ?>"><i class="bi bi-pencil-fill"></i> Editar</a>
+                                    <a class="bt-eliminar" href="/peoplepro/public/index.php?action=visitante&method=eliminar&id=<?= $v['id'] ?>" onclick="return confirm('¿Estás seguro de eliminar?')"><i class="bi bi-trash3-fill"></i> Eliminar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
